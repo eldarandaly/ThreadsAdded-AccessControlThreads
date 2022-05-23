@@ -47,7 +47,7 @@ def receive():
         if type(Signal) is type(None):
             pass
         # else:
-        print(Signal)
+        # print(Signal)
         if Signal == "o":
                 # to unlock the door
                 #start = time.time()
