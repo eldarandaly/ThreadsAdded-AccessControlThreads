@@ -1,6 +1,7 @@
 import socket, os,cv2
 import numpy as np
 import threading as thread
+from DoorDistance import distance
 # import RPi.GPIO as GPIO
 #from demo_lcd import ShowonLcd
 from time import sleep
@@ -106,11 +107,13 @@ def send():
             
     os.exit_(1)
 
-
+def distanceSensor():
+    distance() 
 # send and receive threads
 send_thread = thread.Thread(target=send)
 recv_thread = thread.Thread(target=receive)
-
+dist_thread = thread.Thread(target=distanceSensor)
 # starting threads
 send_thread.start()
 recv_thread.start()
+dist_thread.start()
