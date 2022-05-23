@@ -18,8 +18,8 @@ tcp = socket.SOCK_STREAM
 afm = socket.AF_INET
 
 # user a
-usera_ip = "192.168.1.2"
-usera_port = 2000
+usera_ip = "192.168.1.62"
+usera_port = 9000
 
 # creating socket
 sa = socket.socket(afm,tcp)
@@ -36,7 +36,7 @@ session, addr = sa.accept()
 print(addr)
 
 # connecting to userb 
-sb.connect((usera_ip,2001))
+sb.connect((usera_ip,9001))
 
 def receive():
 

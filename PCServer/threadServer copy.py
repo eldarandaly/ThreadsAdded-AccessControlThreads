@@ -39,7 +39,8 @@ session, addr = sb.accept()
 
 print(addr)
 """--------------------------------This is The ServerCode for our MTCNN Model-----------------------------"""
-
+data = b""
+payload_size = struct.calcsize("Q")
 
 modeldir = 'E:/FACERECOG/AccessControlThreadsAdded/PCServer/model/VGGFaces.pb'
 classifier_filename = 'E:/FACERECOG/AccessControlThreadsAdded/PCServer/class/Model50perClass.pkl'
@@ -101,12 +102,12 @@ def receive(sendSignal):
             net.setInputMean((127.5, 127.5, 127.5)) # mobilenet => [-1, 1]
             net.setInputSwapRB(True)
             
-            while True:
-                en_photo = session.recv(921600)
-                image_arr = np.frombuffer(en_photo,np.uint8)
-                frame = cv2.imdecode(image_arr, cv2.IMREAD_COLOR)
-                if type(frame) is type(None):
-                    pass
+            # while True:
+            #     en_photo = session.recv(921600)
+            #     image_arr = np.frombuffer(en_photo,np.uint8)
+            #     frame = cv2.imdecode(image_arr, cv2.IMREAD_COLOR)
+            #     if type(frame) is type(None):
+            #         pass
                 # else:
                     # cv2.imshow("Video stream", frame)
                     # if cv2.waitKey(10) == 13: 
@@ -114,6 +115,22 @@ def receive(sendSignal):
 
                 # frame = cv2.resize(frame, (0,0), fx=0.5, fy=0.5)
                 # frame=cv2.flip(frame,0)
+            data = b""
+            payload_size = struct.calcsize("Q")
+            while True:
+                while len(data) < payload_size:
+                    packet = session.recv(4*1024) # 4K Socket Recive
+                    if not packet: break
+                    data+=packet
+                packed_msg_size = data[:payload_size]
+                data = data[payload_size:]
+                msg_size = struct.unpack("Q",packed_msg_size)[0]
+                
+                while len(data) < msg_size:
+                    data += session.recv(4*1024)
+                frame_data = data[:msg_size]
+                data  = data[msg_size:]
+                frame = pickle.loads(frame_data)
                 try:
                     bounding_boxes, _ = detect_face.detect_face(frame, minsize, pnet, rnet, onet, threshold, factor)    
                     

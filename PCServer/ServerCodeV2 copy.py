@@ -1,6 +1,5 @@
-import socket, cv2, os
-import numpy as np
-import threading as thread
+from __future__ import absolute_import, division, print_function
+import threading
 from time import sleep
 from PIL import Image
 from keras.models import model_from_json
@@ -15,29 +14,7 @@ import tensorflow as tf
 import TFdetect_face as detect_face
 import TFfacenet as facenet 
 import pandas as pd
-# tcp and ipv4 address family
-tcp = socket.SOCK_STREAM
-afm = socket.AF_INET
-#dfs
-# user b
-userb_ip = '192.168.1.62'
-userb_port = 9001
 
-# creating socket
-sb = socket.socket(afm,tcp)
-sa = socket.socket(afm,tcp)
-
-# bindiing ports 
-sb.bind(('192.168.1.2',userb_port))
-
-# connecting to usera
-sa.connect((userb_ip,9000))
-
-# listening port and creating session
-sb.listen()
-session, addr = sb.accept()
-
-print(addr)
 """--------------------------------This is The ServerCode for our MTCNN Model-----------------------------"""
 
 
@@ -48,18 +25,34 @@ train_img="E:/FACERECOG/AccessControlThreadsAdded/PCServer/TrainFolder50imgPerCl
 
 configPath = 'E:/FACERECOG/AccessControlThreadsAdded/PCServer/PersonDetectionModel/ssd_mobilenet_v3_large_coco_2020_01_14.pbtxt' # tf
 weightsPath = 'E:/FACERECOG/AccessControlThreadsAdded/PCServer/PersonDetectionModel/frozen_inference_graph.pb'
+DATABASEPATH="E:/FACERECOG/AccessControlThreadsAdded/PCServer/NewSeniorDataBase.db"
+
 
 thres = 0.6 # Threshold to detect object
 nms_threshold = 0.45
 
-DATABASEPATH="E:/FACERECOG/AccessControlThreadsAdded/PCServer/NewSeniorDataBase.db"
-
 classNames= []
 Personfile = 'E:/FACERECOG/AccessControlThreadsAdded/PCServer/PersonDetectionModel/coco.names'
 
-sendSignal='j'
+client_socket = socket.socket(socket.AF_INET,socket.SOCK_STREAM) #IPV4 , TCP
+ioSocket=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
 
-def receive(sendSignal):
+host_ip = '192.168.1.62' # paste your server ip address here From The Server Side 
+port = 9999
+
+port2=9900
+sendSignal='Null'
+
+client_socket.connect((host_ip,port)) # a tuple (Socket connect)
+ioSocket.connect((host_ip,port2))
+# client_socket.setblocking(False)
+# ioSocket.setblocking(False)
+# ioSocket.send(bytes('o',"utf-8"))
+
+data = b""
+payload_size = struct.calcsize("Q")
+
+def SocketFunction():
     with tf.Graph().as_default():
         with tf.compat.v1.Session() as sess: 
 
@@ -100,19 +93,23 @@ def receive(sendSignal):
             net.setInputScale(1.0/ 127.5) #INFO 255/2 = 127.5
             net.setInputMean((127.5, 127.5, 127.5)) # mobilenet => [-1, 1]
             net.setInputSwapRB(True)
-            
-            while True:
-                en_photo = session.recv(921600)
-                image_arr = np.frombuffer(en_photo,np.uint8)
-                frame = cv2.imdecode(image_arr, cv2.IMREAD_COLOR)
-                if type(frame) is type(None):
-                    pass
-                # else:
-                    # cv2.imshow("Video stream", frame)
-                    # if cv2.waitKey(10) == 13: 
-                        # break
 
-                # frame = cv2.resize(frame, (0,0), fx=0.5, fy=0.5)
+            while True:
+                while len(data) < payload_size:
+                    packet = client_socket.recv(4*1024) # 4K Socket Recive
+                    if not packet: break
+                    data+=packet
+                packed_msg_size = data[:payload_size]
+                data = data[payload_size:]
+                msg_size = struct.unpack("Q",packed_msg_size)[0]
+                
+                while len(data) < msg_size:
+                    data += client_socket.recv(4*1024)
+                frame_data = data[:msg_size]
+                data  = data[msg_size:]
+                frame = pickle.loads(frame_data)
+
+                frame = cv2.resize(frame, (0,0), fx=0.5, fy=0.5)
                 # frame=cv2.flip(frame,0)
                 try:
                     bounding_boxes, _ = detect_face.detect_face(frame, minsize, pnet, rnet, onet, threshold, factor)    
@@ -236,7 +233,7 @@ def receive(sendSignal):
                                             Id = result_names.split('.')[1]
                                             name=str(name)
                                             sendID=str(Id)
-                                            check=checkIfHaveAccess(sendID)
+                                            # check=checkIfHaveAccess(sendID)
                                             if Id not in preList:
                                                 preList.append(Id)                                                
                                                 if check:
@@ -297,66 +294,41 @@ def receive(sendSignal):
                     cv2.imshow('Face Recognition', frame)
 
                     try:
-                        if sendSignal == "o": # Have Access
-                            sa.sendall(bytes("o","utf-8"))
-                            # sendSignal='Null' # reset 
+                       
+                        # if sendSignal == "o": # Have Access
+                        #     ioSocket.sendall(bytes("o","utf-8"))
+                        #     # sendSignal='Null' # reset 
 
-                        if sendSignal == 'x': # dont have access or spoofing
-                            sa.sendall(bytes("x","utf-8"))
+                        # if sendSignal == 'x': # dont have access or spoofing
+                        #     ioSocket.sendall(bytes("x","utf-8"))
 
-                        if sendSignal == 'a': # person and no face detected 
-                            sa.sendall(bytes("a","utf-8"))
+                        # if sendSignal == 'a': # person and no face detected 
+                        #     ioSocket.sendall(bytes("a","utf-8"))
 
-                        if sendSignal == 't': # Two Person Detected
-                            sa.sendall(bytes("t","utf-8"))
+                        # if sendSignal == 't': # Two Person Detected
+                        #     ioSocket.sendall(bytes("t","utf-8"))
 
-                        if sendSignal == 'u':  # unknow                      
-                            sa.sendall(bytes("u","utf-8"))
+                        # if sendSignal == 'u':  # unknow                      
+                        #     ioSocket.sendall(bytes("u","utf-8"))
 
-                        sendSignal='N' # reset 
-                        # sa.sendall(bytes('\x00',"utf-8"))
-                        # sa.sendall(bytes(sendSignal,"utf-8"))
                         # sendSignal='N' # reset 
+                        # ioSocket.sendall(bytes('\x00',"utf-8"))
+                        ioSocket.sendall(bytes(sendSignal,"utf-8"))
+                        sendSignal='N' # reset 
                     except socket as Error:
                         print("[ERROR] cant send NoFaceDetected")
 
+
                     key = cv2.waitKey(1) & 0xFF
                     if key  == ord('q'):
-                        cv2.destroyAllWindows()
-                        os._exit(1)
+                        break
                     # continue
                 except:
                     pass
 
-def send(sendSignal):
+    client_socket.close()
 
-    while True:
-        # if sendSignal == "o": # Have Access
-        #     sa.sendall(bytes("o","utf-8"))
-        #     # sendSignal='Null' # reset 
-
-        # if sendSignal == 'x': # dont have access or spoofing
-        #     sa.sendall(bytes("x","utf-8"))
-
-        # if sendSignal == 'a': # person and no face detected 
-        #     sa.sendall(bytes("a","utf-8"))
-
-        # if sendSignal == 't': # Two Person Detected
-        #     sa.sendall(bytes("t","utf-8"))
-
-
-        # if sendSignal == 'u':  # unknow                      
-        #     sa.sendall(bytes("u","utf-8"))
-
-            # sendSignal='N' # reset 
-            # sa.sendall(bytes('\x00',"utf-8"))
-            # sa.sendall(bytes(sendSignal,"utf-8"))
-            # sendSignal='N' # reset
-
-
-        sa.sendall(bytes(sendSignal,"utf-8"))
-              
-    os.exit_(1)
+DATABASEPATH="NewSeniorDataBase.db"
 
 def checkIfHaveAccess(EmpID):
     dbflag=True
@@ -399,9 +371,42 @@ def checkIfHaveAccess(EmpID):
 
     conn.commit()
     conn.close()
-# send and receive threads
-# send_thread = thread.Thread(target=send,args=(sendSignal,))
-recv_thread = thread.Thread(target=receive,args=(sendSignal,))
-# starting threads
-# send_thread.start()
-recv_thread.start()
+    # return OpenDoorLock
+
+def writeToExcel():
+
+    conn=sqlite3.connect(DATABASEPATH)
+    cursor=conn.cursor()
+    pd.read_sql_query("SELECT * FROM EmployeeAccess", conn).to_excel('EmployeeAccessTableExcel.xlsx') # You could also give it an existing ExcelWriter object
+
+
+
+def sendSignaltoClient(sig):
+    ioSocket=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+    host_ip='192.168.1.62'
+    port2=9900
+    ioSocket.connect((host_ip,port2))
+    sendSignal=str(sig)
+    if sendSignal == "o": # Have Access
+        ioSocket.sendall(bytes("o","utf-8"))
+        # sendSignal='Null' # reset 
+
+    if sendSignal == 'x': # dont have access or spoofing
+        ioSocket.sendall(bytes("x","utf-8"))
+
+    if sendSignal == 'a': # person and no face detected 
+        ioSocket.sendall(bytes("a","utf-8"))
+
+    if sendSignal == 't': # Two Person Detected
+        ioSocket.sendall(bytes("t","utf-8"))
+
+    if sendSignal == 'u':  # unknow                      
+        ioSocket.sendall(bytes("u","utf-8"))
+
+    sendSignal='Null' # reset 
+    ioSocket.sendall(bytes('\x00',"utf-8"))
+if __name__=="__main__":
+    SocketFunction()
+    # checkIfHaveAccess("56")
+    # writeToExcel()
+
