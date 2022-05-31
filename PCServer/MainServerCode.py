@@ -255,7 +255,7 @@ def receive(sendSignal):
                                             sendID=str(Id)
                                             check=checkIfHaveAccess(sendID)
                                             if Id not in preList:
-                                                preList.append(Id)                                                
+                                                # preList.append(Id)                                                
                                                 if check:
                                                     sendSignal='o'
                                                 else:
@@ -286,7 +286,7 @@ def receive(sendSignal):
                                             
                                             if Id not in preList:
                                                 
-                                                preList.append(Id)
+                                                # preList.append(Id)
                                                 sendSignal='x'
 
                                             label = 'Fake '+result_names+"is Taken as Spoofed"
