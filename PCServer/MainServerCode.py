@@ -120,14 +120,17 @@ def receive(sendSignal):
             while True:
                 while len(data) < payload_size:
                     packet = session.recv(4*1024) # 4K Socket Recive
+                    
                     if not packet: break
                     data+=packet
+                
                 packed_msg_size = data[:payload_size]
                 data = data[payload_size:]
                 msg_size = struct.unpack("Q",packed_msg_size)[0]
                 
                 while len(data) < msg_size:
                     data += session.recv(4*1024)
+                
                 frame_data = data[:msg_size]
                 data  = data[msg_size:]
                 frame = pickle.loads(frame_data)
@@ -316,26 +319,26 @@ def receive(sendSignal):
                     try:
                         if sendSignal == "o": # Have Access
                             sa.sendall(bytes("o","utf-8"))
-                            # sendSignal='Null' # reset 
+                            sendSignal='Null' # reset 
 
                         if sendSignal == 'x': # dont have access or spoofing
                             sa.sendall(bytes("x","utf-8"))
-
+                            sendSignal='Null'
                         if sendSignal == 'a': # person and no face detected 
                             sa.sendall(bytes("a","utf-8"))
-
+                            sendSignal='Null'
                         if sendSignal == 't': # Two Person Detected
                             sa.sendall(bytes("t","utf-8"))
-
+                            sendSignal='Null'
                         if sendSignal == 'u':  # unknow                      
                             sa.sendall(bytes("u","utf-8"))
-
+                            sendSignal='Null'
                         sendSignal='N' # reset 
                         # sa.sendall(bytes('\x00',"utf-8"))
                         # sa.sendall(bytes(sendSignal,"utf-8"))
                         # sendSignal='N' # reset 
                     except socket as Error:
-                        print("[ERROR] cant send NoFaceDetected")
+                        print("[ERROR] cant send ")
 
                     key = cv2.waitKey(1) & 0xFF
                     if key  == ord('q'):
@@ -348,34 +351,35 @@ def receive(sendSignal):
 def send(sendSignal):
 
     while True:
-        # if sendSignal == "o": # Have Access
-        #     sa.sendall(bytes("o","utf-8"))
-        #     # sendSignal='Null' # reset 
+        if sendSignal == "o": # Have Access
+            sa.sendall(bytes("o","utf-8"))
+            # sendSignal='Null' # reset 
 
-        # if sendSignal == 'x': # dont have access or spoofing
-        #     sa.sendall(bytes("x","utf-8"))
+        if sendSignal == 'x': # dont have access or spoofing
+            sa.sendall(bytes("x","utf-8"))
 
-        # if sendSignal == 'a': # person and no face detected 
-        #     sa.sendall(bytes("a","utf-8"))
+        if sendSignal == 'a': # person and no face detected 
+            sa.sendall(bytes("a","utf-8"))
 
-        # if sendSignal == 't': # Two Person Detected
-        #     sa.sendall(bytes("t","utf-8"))
-
-
-        # if sendSignal == 'u':  # unknow                      
-        #     sa.sendall(bytes("u","utf-8"))
-
-            # sendSignal='N' # reset 
-            # sa.sendall(bytes('\x00',"utf-8"))
-            # sa.sendall(bytes(sendSignal,"utf-8"))
-            # sendSignal='N' # reset
+        if sendSignal == 't': # Two Person Detected
+            sa.sendall(bytes("t","utf-8"))
 
 
-        sa.sendall(bytes(sendSignal,"utf-8"))
+        if sendSignal == 'u':  # unknow                      
+            sa.sendall(bytes("u","utf-8"))
+
+            sendSignal='N' # reset 
+            sa.sendall(bytes('\x00',"utf-8"))
+            sa.sendall(bytes(sendSignal,"utf-8"))
+            sendSignal='N' # reset
+
+
+        # sa.sendall(bytes(sendSignal,"utf-8"))
               
     os.exit_(1)
 
 def checkIfHaveAccess(EmpID):
+
     dbflag=True
     ThisGate='2'
     try:
@@ -416,6 +420,7 @@ def checkIfHaveAccess(EmpID):
 
     conn.commit()
     conn.close()
+
 # send and receive threads
 # send_thread = thread.Thread(target=send,args=(sendSignal,))
 recv_thread = thread.Thread(target=receive,args=(sendSignal,))

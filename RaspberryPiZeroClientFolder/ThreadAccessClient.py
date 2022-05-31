@@ -125,12 +125,20 @@ class FreshestFrame(threading.Thread):
 def receive():
     while True:
         sig = session.recv(1)
+        
         Signal=sig.decode("utf-8")
         if type(Signal) is type(None):
             pass
         print(Signal)
         state= GPIO.input(13)
         #print(state)
+       """
+       # The above code is checking if the signal is "o" and if it is, it will display "Access
+       # Confirmed" and "Ahmed" on the LCD screen. It will also unlock the door and print "door
+       # unlock" on the terminal. It will then wait for the door to be closed and then lock the door
+       # and print "door lock" on the terminal.
+       # 
+       """
         if Signal == "o":
                 # to unlock the door
                 #print("writing to display")
