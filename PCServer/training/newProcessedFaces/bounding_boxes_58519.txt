@@ -1,0 +1,3 @@
+training/newProcessedFaces\Abbas.5\IMG20220605045929.png 313 1621 564 1933
+training/newProcessedFaces\ibrhaim.7\IMG20220605050339.png
+training/newProcessedFaces\ibrhaim.7\IMG20220605050343.png

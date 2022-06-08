@@ -8,7 +8,7 @@ from keras.models import model_from_json
 from tkinter import Tk     
 from tkinter.filedialog import askopenfilename
 from xlsxwriter. workbook import Workbook
-
+import threading
 import os,pickle,socket,struct,sqlite3,cv2
 import numpy as np
 import tensorflow as tf
@@ -19,19 +19,26 @@ import pandas as pd
 tcp = socket.SOCK_STREAM
 afm = socket.AF_INET
 #dfs
-# user b
-userb_ip = '192.168.1.62'
-userb_port = 9001
+
+
+# Server Ip/port
+user_b_ip = '192.168.1.2'
+user_b_port = 9001
+
+#Client IP/port
+# client_ip=input("Please Enter The Gate IP like [192.168.xxx.xxx] or Enter Gate ID [1,2,3,...] ")
+user_a_ip =  '192.168.1.62'
+user_a_port = 9000
 
 # creating socket
 sb = socket.socket(afm,tcp)
 sa = socket.socket(afm,tcp)
 
 # bindiing ports 
-sb.bind(('192.168.1.2',userb_port))
+sb.bind((user_b_ip,user_b_port))
 
 # connecting to usera
-sa.connect((userb_ip,9000))
+sa.connect((user_a_ip,user_a_port))
 
 # listening port and creating session
 sb.listen()
@@ -42,23 +49,101 @@ print(addr)
 data = b""
 payload_size = struct.calcsize("Q")
 
-modeldir = 'E:/FACERECOG/AccessControlThreadsAdded/PCServer/model/VGGFaces.pb'
-classifier_filename = 'E:/FACERECOG/AccessControlThreadsAdded/PCServer/class/Model50perClass.pkl'
-npy='E:/FACERECOG/AccessControlThreadsAdded/PCServer/npy'
-train_img="E:/FACERECOG/AccessControlThreadsAdded/PCServer/TrainFolder50imgPerClass"
+modeldir = 'model/VGGFaces.pb'
+classifier_filename = 'training/class/Testing100 - Copy.pkl'
+npy='npy'
+train_img="training/TrainFolder50imgPerClass"
 
-configPath = 'E:/FACERECOG/AccessControlThreadsAdded/PCServer/PersonDetectionModel/ssd_mobilenet_v3_large_coco_2020_01_14.pbtxt' # tf
-weightsPath = 'E:/FACERECOG/AccessControlThreadsAdded/PCServer/PersonDetectionModel/frozen_inference_graph.pb'
+configPath = 'PersonDetectionModel/ssd_mobilenet_v3_large_coco_2020_01_14.pbtxt' # tf
+weightsPath = 'PersonDetectionModel/frozen_inference_graph.pb'
 
 thres = 0.6 # Threshold to detect object
 nms_threshold = 0.45
 
-DATABASEPATH="E:/FACERECOG/AccessControlThreadsAdded/PCServer/NewSeniorDataBase.db"
+DATABASEPATH="NewSeniorDataBase.db"
 
 classNames= []
-Personfile = 'E:/FACERECOG/AccessControlThreadsAdded/PCServer/PersonDetectionModel/coco.names'
+Personfile = 'PersonDetectionModel/coco.names'
 
 sendSignal='j'
+firstRunimg='training/TrainFolder50imgPerClass/Ahmed.1/img (1).jpeg'
+ENTER_CAMERA=0 #"rtsp://admin:TZZUNI@192.168.1.58:554/H.264"#0#'http://192.168.0.4:8080/video'
+
+class FreshestFrame(threading.Thread):
+    def __init__(self, capture, name='FreshestFrame'):
+        self.capture = capture
+        assert self.capture.isOpened()
+
+        # this lets the read() method block until there's a new frame
+        self.cond = threading.Condition()
+
+        # this allows us to stop the thread gracefully
+        self.running = False
+
+        # keeping the newest frame around
+        self.frame = None
+
+        # passing a sequence number allows read() to NOT block
+        # if the currently available one is exactly the one you ask for
+        self.latestnum = 0
+
+        # this is just for demo purposes
+        self.callback = None
+
+        super().__init__(name=name)
+        self.start()
+
+    def start(self):
+        self.running = True
+        super().start()
+
+    def release(self, timeout=None):
+        self.running = False
+        self.join(timeout=timeout)
+        self.capture.release()
+
+    def run(self):
+        counter = 0
+        while self.running:
+            # block for fresh frame
+            try:
+                (rv, img) = self.capture.read()
+
+                assert rv
+                counter += 1
+            except Exception:
+                print("no camera detected")
+                continue
+
+            # publish the frame
+            with self.cond:  # lock the condition for this operation
+                self.frame = img if rv else None
+                self.latestnum = counter
+                self.cond.notify_all()
+
+            if self.callback:
+                self.callback(img)
+
+    def read(self, wait=True, seqnumber=None, timeout=None):
+        # with no arguments (wait=True), it always blocks for a fresh frame
+        # with wait=False it returns the current frame immediately (polling)
+        # with a seqnumber, it blocks until that frame is available (or no wait at all)
+        # with timeout argument, may return an earlier frame;
+        #   may even be (0,None) if nothing received yet
+
+        with self.cond:
+            if wait:
+                if seqnumber is None:
+                    seqnumber = self.latestnum+1
+                if seqnumber < 1:
+                    seqnumber = 1
+
+                rv = self.cond.wait_for(
+                    lambda: self.latestnum >= seqnumber, timeout=timeout)
+                if not rv:
+                    return (self.latestnum, self.frame)
+
+            return (self.latestnum, self.frame)
 
 def receive(sendSignal):
     with tf.Graph().as_default():
@@ -74,13 +159,15 @@ def receive(sendSignal):
             input_image_size = 160  # 160
             HumanNames = os.listdir(train_img)
             HumanNames.sort()
-            preList = []
+
+            real_face_list = []
+            fake_face_list = []
             print('Loading Model')
-            json_file = open('E:/FACERECOG/AccessControlThreadsAdded/PCServer/antispoofing_models/antispoofing_model.json', 'r')
+            json_file = open('antispoofing_models/antispoofing_model.json', 'r')
             loaded_model_json = json_file.read()
             json_file.close()
             antiSpofingmodel = model_from_json(loaded_model_json)
-            antiSpofingmodel.load_weights('E:/FACERECOG/AccessControlThreadsAdded/PCServer/antispoofing_models/antispoofing_model.h5')
+            antiSpofingmodel.load_weights('antispoofing_models/antispoofing_model.h5')
             print("AntiSpoofing Model Loaded")
             facenet.load_model(modeldir)
 
@@ -102,7 +189,7 @@ def receive(sendSignal):
             net.setInputMean((127.5, 127.5, 127.5)) # mobilenet => [-1, 1]
             net.setInputSwapRB(True)
             
-            # while True:
+            '''# while True:
             #     en_photo = session.recv(921600)
             #     image_arr = np.frombuffer(en_photo,np.uint8)
             #     frame = cv2.imdecode(image_arr, cv2.IMREAD_COLOR)
@@ -114,26 +201,40 @@ def receive(sendSignal):
                         # break
 
                 # frame = cv2.resize(frame, (0,0), fx=0.5, fy=0.5)
-                # frame=cv2.flip(frame,0)
+                # frame=cv2.flip(frame,0)'''
             data = b""
             payload_size = struct.calcsize("Q")
-            while True:
-                while len(data) < payload_size:
-                    packet = session.recv(4*1024) # 4K Socket Recive
-                    
-                    if not packet: break
-                    data+=packet
-                
-                packed_msg_size = data[:payload_size]
-                data = data[payload_size:]
-                msg_size = struct.unpack("Q",packed_msg_size)[0]
-                
-                while len(data) < msg_size:
-                    data += session.recv(4*1024)
-                
-                frame_data = data[:msg_size]
-                data  = data[msg_size:]
-                frame = pickle.loads(frame_data)
+            try:
+                First_Run(sess, pnet, rnet, onet, minsize, threshold, factor, image_size, input_image_size,
+                        antiSpofingmodel, images_placeholder, embeddings, phase_train_placeholder, embedding_size, model)
+            except:
+                print("--pass Fitst run IMG")
+            entering_camera = cv2.VideoCapture(ENTER_CAMERA)
+            entering_camera_therad = FreshestFrame(entering_camera)
+            if not (entering_camera_therad.isOpened()):
+                print("no camera detected")
+            else:
+                pass
+
+
+            while session:
+                ''' while len(data) < payload_size:
+                #     packet = session.recv(4*1024) # 4K Socket Recive
+                #     if not packet: break
+                #     data+=packet
+                # packed_msg_size = data[:payload_size]
+                # data = data[payload_size:]
+                # msg_size = struct.unpack("Q",packed_msg_size)[0]
+                # while len(data) < msg_size:
+                #     data += session.recv(4*4096)
+
+                # frame_data = data[:msg_size]
+                # data  = data[msg_size:]
+                # frame = pickle.loads(frame_data)
+                # frame = cv2.resize(frame, (0,0), fx=0.5, fy=0.5)'''
+
+                ret, frame = entering_camera_therad.read()  # Entering Cam
+
                 try:
                     bounding_boxes, _ = detect_face.detect_face(frame, minsize, pnet, rnet, onet, threshold, factor)    
                     
@@ -161,7 +262,7 @@ def receive(sendSignal):
                     if faceNum==0 and isPerson==0: 
                         for i in indices:
                             acc=float(confs[0])
-                            if acc>0.6:
+                            if acc>0.7:
                                 i = i[0]
                                 box = bbox[i]
                                 x,y,w,h = box[0],box[1],box[2],box[3]
@@ -171,11 +272,13 @@ def receive(sendSignal):
                                     cv2.rectangle(frame, (x,y),(x+w,h+y), color=(0, 255, 0), thickness=2)
                                     cv2.putText(frame,classNames[classIds[i][0]-1].upper(),(box[0]+10,box[1]+30),cv2.FONT_HERSHEY_COMPLEX,1,(0,255,0),2)
 
-                                    sendSignal='a'            
+                                    sendSignal='a' 
+                                    # send_thread = thread.Thread(target=send,args=(sendSignal,))
+                                    # send_thread.start()                                                
                                 else:
                                     pass
 
-                    if faceNum ==1: 
+                    elif faceNum ==1: 
                     
                         det = bounding_boxes[:, 0:4]
                         img_size = np.asarray(frame.shape)[0:2]
@@ -218,7 +321,7 @@ def receive(sendSignal):
                                 best_class_indices = np.argmax(predictions, axis=1)
 
                                 best_class_probabilities = predictions[np.arange(len(best_class_indices)), best_class_indices]
-                                
+                                print(best_class_indices,best_class_probabilities)
                                 face = frame[ymin:ymax, xmin:xmax]
                                 resized_face = cv2.resize(face, (160, 160))
                                 resized_face = resized_face.astype( "float") / 255.0
@@ -233,12 +336,14 @@ def receive(sendSignal):
                                 try:
                                     if (indices.size ==0) or int(indices[0][0])== 0 :
                                         isPerson=0
+                                        print("person detected")
                                     else:
                                         isPerson=1
+                                        print("not person")
                                 except:
                                     pass
 
-                                if best_class_probabilities > 0.6 and preds <0.6 and isPerson==0: # Real prson and have acc >> 70% and his Face detected 
+                                if best_class_probabilities <1.0 and preds <0.001 : # Real prson and have acc >> 70% and his Face detected 
                                     # if isPerson==0:  
                                     for i in indices:                     
                                         acc=float(confs[0])
@@ -256,14 +361,16 @@ def receive(sendSignal):
                                             Id = result_names.split('.')[1]
                                             name=str(name)
                                             sendID=str(Id)
+                                            
                                             check=checkIfHaveAccess(sendID)
-                                            if Id not in preList:
-                                                # preList.append(Id)                                                
+                                            if Id not in real_face_list:
+                                                real_face_list.append(Id)
+
                                                 if check:
-                                                    sendSignal='o'
+                                                    sendSignal='o'                                                 
                                                 else:
                                                     sendSignal='x'
-                                                                                  
+                                                                        
                                             print("Predictions : [ name: {} , accuracy: {:.3f} ]".format(HumanNames[best_class_indices[0]],best_class_probabilities[0]))
                                             label = 'Real'
                                             cv2.putText(frame, label, (xmax, ymax),cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 2)
@@ -276,7 +383,7 @@ def receive(sendSignal):
                                             cv2.putText(frame,classNames[classIds[0][0]-1].upper(),(box[0]+10,box[1]+30),cv2.FONT_HERSHEY_COMPLEX,1,(0,255,0),2) #person text
    
                                                                                     
-                                elif best_class_probabilities > 0.7 and preds > 0.2: #Fake person and have acc> 70% but Spoofing 
+                                elif best_class_probabilities <1.0 and preds > 0.2: #Fake person and have acc> 70% but Spoofing 
                                     
                                     cv2.rectangle(frame, (xmin, ymin), (xmax, ymax), (0, 255, 0), 2)
                                     
@@ -287,10 +394,12 @@ def receive(sendSignal):
                                             name=result_names.split('.')[0]
                                             Id = result_names.split('.')[1]
                                             
-                                            if Id not in preList:
+                                            if Id not in fake_face_list:
                                                 
-                                                # preList.append(Id)
+                                                fake_face_list.append(Id)
                                                 sendSignal='x'
+                                                # send_thread = thread.Thread(target=send,args=(sendSignal,))
+                                                # send_thread.start() 
 
                                             label = 'Fake '+result_names+"is Taken as Spoofed"
                                             cv2.putText(frame, label, (xmax, ymax), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 0, 0), 2)
@@ -307,7 +416,8 @@ def receive(sendSignal):
                                     cv2.putText(frame, "Unknow", (xmin,ymin-5), cv2.FONT_HERSHEY_COMPLEX_SMALL,
                                                         1, (0, 0, 0), thickness=1, lineType=1)
                                     sendSignal='u'
-                                        
+                                    # send_thread = thread.Thread(target=send,args=(sendSignal,))
+                                    # send_thread.start()   
                             except:  
                                 print("[ERROR] Frame skipped ")
 
@@ -333,50 +443,124 @@ def receive(sendSignal):
                         if sendSignal == 'u':  # unknow                      
                             sa.sendall(bytes("u","utf-8"))
                             sendSignal='Null'
+
+                        real_face_list.clear()
+                        fake_face_list.clear()
+
                         sendSignal='N' # reset 
                         # sa.sendall(bytes('\x00',"utf-8"))
                         # sa.sendall(bytes(sendSignal,"utf-8"))
                         # sendSignal='N' # reset 
+
                     except socket as Error:
                         print("[ERROR] cant send ")
-
                     key = cv2.waitKey(1) & 0xFF
                     if key  == ord('q'):
-                        cv2.destroyAllWindows()
-                        os._exit(1)
-                    # continue
+                        sa.sendall(bytes("q","utf-8"))
+                        break
                 except:
+                    print("Skipped")
                     pass
+            cv2.destroyAllWindows()
+            sa.close()
+            sb.close()
+            os._exit(1)
 
-def send(sendSignal):
+''' def send(sendSignal):
 
-    while True:
-        if sendSignal == "o": # Have Access
-            sa.sendall(bytes("o","utf-8"))
-            # sendSignal='Null' # reset 
+#     if sendSignal == "o": # Have Access
+#         sa.sendall(bytes("o","utf-8"))
+#         # sendSignal='Null' # reset 
 
-        if sendSignal == 'x': # dont have access or spoofing
-            sa.sendall(bytes("x","utf-8"))
+#     if sendSignal == 'x': # dont have access or spoofing
+#         sa.sendall(bytes("x","utf-8"))
 
-        if sendSignal == 'a': # person and no face detected 
-            sa.sendall(bytes("a","utf-8"))
+#     if sendSignal == 'a': # person and no face detected 
+#         sa.sendall(bytes("a","utf-8"))
 
-        if sendSignal == 't': # Two Person Detected
-            sa.sendall(bytes("t","utf-8"))
+#     if sendSignal == 't': # Two Person Detected
+#         sa.sendall(bytes("t","utf-8"))
 
-
-        if sendSignal == 'u':  # unknow                      
-            sa.sendall(bytes("u","utf-8"))
-
-            sendSignal='N' # reset 
-            sa.sendall(bytes('\x00',"utf-8"))
-            sa.sendall(bytes(sendSignal,"utf-8"))
-            sendSignal='N' # reset
+#     if sendSignal == 'u':  # unknow                      
+#         sa.sendall(bytes("u","utf-8"))
+#         sendSignal='N' # reset 
+#         # sa.sendall(bytes('\x00',"utf-8"))
+#         # sa.sendall(bytes(sendSignal,"utf-8"))
+#         # sendSignal='N' # reset'''
 
 
-        # sa.sendall(bytes(sendSignal,"utf-8"))
-              
-    os.exit_(1)
+def First_Run(sess, pnet, rnet, onet, MIN_SIZE, THERSHOLD, factor, IMAGE_SIZE, INPUT_IMAGE_SIZE, antiSpofingmodel, images_placeholder, embeddings, phase_train_placeholder, embedding_size, model):
+    frame = cv2.imread(firstRunimg)
+    bounding_boxes, _ = detect_face.detect_face(frame, MIN_SIZE, pnet, rnet, onet, THERSHOLD, factor)
+    faceNum = bounding_boxes.shape[0]
+
+    if faceNum > 0:  # Number of faces on the screen
+        det = bounding_boxes[:, 0:4]  # get x ,y,width,height
+
+        img_size = np.asarray(frame.shape)[0:2]  # get image size
+        cropped = []
+        scaled = []
+        scaled_reshape = []
+
+        for i in range(faceNum):
+            # get Embedding of the detected face
+            emb_array = np.zeros((1, embedding_size))
+
+            # points around the detected face
+            xmin = int(det[i][0])
+            ymin = int(det[i][1])  # ||  ||
+            xmax = int(det[i][2])  # ||  ||
+            ymax = int(det[i][3])  # ||  ||
+
+            try:
+                # inner exception if the face is to close to the camear
+                if xmin <= 0 or ymin <= 0 or xmax >= len(frame[0]) or ymax >= len(frame):
+                    print('Face is very close!')
+                    continue
+                    # crop the face to recog
+                cropped.append(frame[ymin:ymax, xmin:xmax, :])
+
+                # Mirror the cropped face img
+                cropped[i] = facenet.flip(cropped[i], False)
+
+                scaled.append(np.array(Image.fromarray(cropped[i]).resize(
+                    (IMAGE_SIZE, IMAGE_SIZE))))  # scale the cropped img
+
+                scaled[i] = cv2.resize(
+                    scaled[i], (INPUT_IMAGE_SIZE, INPUT_IMAGE_SIZE), interpolation=cv2.INTER_CUBIC)
+
+                scaled[i] = facenet.prewhiten(scaled[i])
+
+                scaled_reshape.append(
+                    scaled[i].reshape(-1, INPUT_IMAGE_SIZE, INPUT_IMAGE_SIZE, 3))
+
+                feed_dict = {
+                    images_placeholder: scaled_reshape[i], phase_train_placeholder: False}
+
+                # GET Between the detected Embeddings and the preTrained Model
+                emb_array[0, :] = sess.run(embeddings, feed_dict=feed_dict)
+
+                # Predict Between the detected Embeddings and the preTrained Model
+                predictions = model.predict_proba(emb_array)
+
+                # get the Best Recog Class label
+                best_class_indices = np.argmax(predictions, axis=1)
+
+                # get the acc
+                best_class_probabilities = predictions[np.arange(
+                    len(best_class_indices)), best_class_indices]
+
+                # pass the face ROI through the trained liveness detector
+                # model to determine if the face is "real" or "fake"
+                face = frame[ymin:ymax, xmin:xmax]
+                resized_face = cv2.resize(face, (160, 160))
+                resized_face = resized_face.astype("float") / 255.0
+                resized_face = np.expand_dims(resized_face, axis=0)
+
+                preds = antiSpofingmodel.predict(resized_face)[0]
+                print("LoadingDone")
+            except:
+                print("error")
 
 def checkIfHaveAccess(EmpID):
 
@@ -403,7 +587,6 @@ def checkIfHaveAccess(EmpID):
         cursor = conn.cursor()
         check_query='SELECT Gate_ID,AcessSchemeID,Cat FROM EmployeeAccess WHERE Emp_ID=\''+EmpID+"\'"
         cursor.execute(check_query)
-
 
     EmpAccessRecord=cursor.fetchall()
     for rowx in EmpAccessRecord:

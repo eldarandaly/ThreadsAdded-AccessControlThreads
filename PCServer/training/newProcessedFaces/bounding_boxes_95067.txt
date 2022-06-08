@@ -1,0 +1,756 @@
+training/newProcessedFaces\Abbas.5\img (1).png 167 343 435 697
+training/newProcessedFaces\Abbas.5\img (10).png 148 164 552 711
+training/newProcessedFaces\Abbas.5\img (11).png 135 303 508 788
+training/newProcessedFaces\Abbas.5\img (12).png 126 205 531 697
+training/newProcessedFaces\Abbas.5\img (13).png 126 205 531 697
+training/newProcessedFaces\Abbas.5\img (14).png 155 388 471 800
+training/newProcessedFaces\Abbas.5\img (15).png 155 388 471 800
+training/newProcessedFaces\Abbas.5\img (16).png 135 303 508 788
+training/newProcessedFaces\Abbas.5\img (17).png 212 398 549 863
+training/newProcessedFaces\Abbas.5\img (18).png 212 398 549 863
+training/newProcessedFaces\Abbas.5\img (19).png 212 398 549 863
+training/newProcessedFaces\Abbas.5\img (2).png 167 343 435 697
+training/newProcessedFaces\Abbas.5\img (20).png 115 410 454 853
+training/newProcessedFaces\Abbas.5\img (21).png 115 410 454 853
+training/newProcessedFaces\Abbas.5\img (22).png 4 423 333 865
+training/newProcessedFaces\Abbas.5\img (23).png 4 423 333 865
+training/newProcessedFaces\Abbas.5\img (24).png 4 423 333 865
+training/newProcessedFaces\Abbas.5\img (25).png 66 393 378 840
+training/newProcessedFaces\Abbas.5\img (26).png 66 393 378 840
+training/newProcessedFaces\Abbas.5\img (27).png 66 393 378 840
+training/newProcessedFaces\Abbas.5\img (28).png 66 393 378 840
+training/newProcessedFaces\Abbas.5\img (29).png 4 423 333 865
+training/newProcessedFaces\Abbas.5\img (3).png 167 343 435 697
+training/newProcessedFaces\Abbas.5\img (30).png 4 423 333 865
+training/newProcessedFaces\Abbas.5\img (31).png 66 393 378 840
+training/newProcessedFaces\Abbas.5\img (32).png 66 393 378 840
+training/newProcessedFaces\Abbas.5\img (33).png 4 423 333 865
+training/newProcessedFaces\Abbas.5\img (34).png 4 423 333 865
+training/newProcessedFaces\Abbas.5\img (35).png 66 393 378 840
+training/newProcessedFaces\Abbas.5\img (36).png 66 393 378 840
+training/newProcessedFaces\Abbas.5\img (37).png 212 398 549 863
+training/newProcessedFaces\Abbas.5\img (38).png 189 393 527 832
+training/newProcessedFaces\Abbas.5\img (39).png 189 393 527 832
+training/newProcessedFaces\Abbas.5\img (4).png 167 343 435 697
+training/newProcessedFaces\Abbas.5\img (40).png 189 393 527 832
+training/newProcessedFaces\Abbas.5\img (41).png 189 393 527 832
+training/newProcessedFaces\Abbas.5\img (42).png 189 393 527 832
+training/newProcessedFaces\Abbas.5\img (43).png 132 401 447 813
+training/newProcessedFaces\Abbas.5\img (44).png 132 401 447 813
+training/newProcessedFaces\Abbas.5\img (45).png 132 401 447 813
+training/newProcessedFaces\Abbas.5\img (46).png 132 401 447 813
+training/newProcessedFaces\Abbas.5\img (47).png 132 401 447 813
+training/newProcessedFaces\Abbas.5\img (48).png 132 401 447 813
+training/newProcessedFaces\Abbas.5\img (49).png 132 401 447 813
+training/newProcessedFaces\Abbas.5\img (5).png 167 343 435 697
+training/newProcessedFaces\Abbas.5\img (50).png 189 393 527 832
+training/newProcessedFaces\Abbas.5\img (6).png 167 343 435 697
+training/newProcessedFaces\Abbas.5\img (7).png 71 111 475 688
+training/newProcessedFaces\Abbas.5\img (8).png 71 111 475 688
+training/newProcessedFaces\Abbas.5\img (9).png 148 164 552 711
+training/newProcessedFaces\Abbas.5\IMG20220605045407.png 1086 1583 2780 3846
+training/newProcessedFaces\Abbas.5\IMG20220605045822.png 1140 1846 2993 4300
+training/newProcessedFaces\Abbas.5\IMG20220605045824.png 940 1673 2818 4217
+training/newProcessedFaces\Abbas.5\IMG20220605045832.png 854 1779 2630 4230
+training/newProcessedFaces\Abbas.5\IMG20220605045835.png 1489 1909 3312 4361
+training/newProcessedFaces\Abbas.5\IMG20220605045843.png 547 1659 2111 4010
+training/newProcessedFaces\Abbas.5\IMG20220605045928.png 1407 1783 3060 3634
+training/newProcessedFaces\Abbas.5\IMG20220605045929.png 313 1621 564 1933
+training/newProcessedFaces\Abbas.5\IMG20220605045936.png 1286 2148 2992 4624
+training/newProcessedFaces\Abbas.5\IMG20220605045938.png 1927 2238 3479 4743
+training/newProcessedFaces\Abbas.5\IMG20220605045941.png 1213 2037 2961 4426
+training/newProcessedFaces\Abbas.5\IMG20220605045944.png 1205 2097 2963 4497
+training/newProcessedFaces\Abbas.5\IMG20220605045958.png 1146 2443 2993 5053
+training/newProcessedFaces\Abbas.5\IMG20220605050008.png 1348 2055 2969 3933
+training/newProcessedFaces\Abbas.5\IMG20220605050011.png 839 2136 2233 3834
+training/newProcessedFaces\Abdo.6\img (1).png 229 326 613 887
+training/newProcessedFaces\Abdo.6\img (10).png 365 414 715 892
+training/newProcessedFaces\Abdo.6\img (11).png 127 372 465 882
+training/newProcessedFaces\Abdo.6\img (12).png 127 372 465 882
+training/newProcessedFaces\Abdo.6\img (13).png 127 372 465 882
+training/newProcessedFaces\Abdo.6\img (14).png 127 372 465 882
+training/newProcessedFaces\Abdo.6\img (15).png 127 372 465 882
+training/newProcessedFaces\Abdo.6\img (16).png 127 372 465 882
+training/newProcessedFaces\Abdo.6\img (17).png 127 372 465 882
+training/newProcessedFaces\Abdo.6\img (18).png 127 372 465 882
+training/newProcessedFaces\Abdo.6\img (19).png 159 380 506 854
+training/newProcessedFaces\Abdo.6\img (2).png 229 326 613 887
+training/newProcessedFaces\Abdo.6\img (20).png 159 380 506 854
+training/newProcessedFaces\Abdo.6\img (21).png 159 380 506 854
+training/newProcessedFaces\Abdo.6\img (22).png 159 380 506 854
+training/newProcessedFaces\Abdo.6\img (23).png 159 380 506 854
+training/newProcessedFaces\Abdo.6\img (24).png 159 380 506 854
+training/newProcessedFaces\Abdo.6\img (25).png 159 380 506 854
+training/newProcessedFaces\Abdo.6\img (26).png 159 380 506 854
+training/newProcessedFaces\Abdo.6\img (27).png 210 492 544 962
+training/newProcessedFaces\Abdo.6\img (28).png 210 492 544 962
+training/newProcessedFaces\Abdo.6\img (29).png 210 492 544 962
+training/newProcessedFaces\Abdo.6\img (3).png 365 414 715 892
+training/newProcessedFaces\Abdo.6\img (30).png 210 492 544 962
+training/newProcessedFaces\Abdo.6\img (31).png 210 492 544 962
+training/newProcessedFaces\Abdo.6\img (32).png 210 492 544 962
+training/newProcessedFaces\Abdo.6\img (33).png 210 492 544 962
+training/newProcessedFaces\Abdo.6\img (34).png 210 492 544 962
+training/newProcessedFaces\Abdo.6\img (35).png 125 537 445 967
+training/newProcessedFaces\Abdo.6\img (36).png 125 537 445 967
+training/newProcessedFaces\Abdo.6\img (37).png 125 537 445 967
+training/newProcessedFaces\Abdo.6\img (38).png 125 537 445 967
+training/newProcessedFaces\Abdo.6\img (39).png 125 537 445 967
+training/newProcessedFaces\Abdo.6\img (4).png 365 414 715 892
+training/newProcessedFaces\Abdo.6\img (40).png 125 537 445 967
+training/newProcessedFaces\Abdo.6\img (41).png 125 537 445 967
+training/newProcessedFaces\Abdo.6\img (42).png 125 537 445 967
+training/newProcessedFaces\Abdo.6\img (43).png 167 617 537 1102
+training/newProcessedFaces\Abdo.6\img (44).png 167 617 537 1102
+training/newProcessedFaces\Abdo.6\img (45).png 167 617 537 1102
+training/newProcessedFaces\Abdo.6\img (46).png 167 617 537 1102
+training/newProcessedFaces\Abdo.6\img (47).png 167 617 537 1102
+training/newProcessedFaces\Abdo.6\img (48).png 167 617 537 1102
+training/newProcessedFaces\Abdo.6\img (49).png 167 617 537 1102
+training/newProcessedFaces\Abdo.6\img (5).png 365 414 715 892
+training/newProcessedFaces\Abdo.6\img (50).png 167 617 537 1102
+training/newProcessedFaces\Abdo.6\img (6).png 365 414 715 892
+training/newProcessedFaces\Abdo.6\img (7).png 365 414 715 892
+training/newProcessedFaces\Abdo.6\img (8).png 365 414 715 892
+training/newProcessedFaces\Abdo.6\img (9).png 365 414 715 892
+training/newProcessedFaces\Ahmed.1\img (1).png 345 688 791 1283
+training/newProcessedFaces\Ahmed.1\img (13).png 340 719 800 1308
+training/newProcessedFaces\Ahmed.1\img (14).png 383 665 815 1154
+training/newProcessedFaces\Ahmed.1\img (15).png 383 665 815 1154
+training/newProcessedFaces\Ahmed.1\img (16).png 437 685 889 1255
+training/newProcessedFaces\Ahmed.1\img (17).png 437 685 889 1255
+training/newProcessedFaces\Ahmed.1\img (18).png 322 680 769 1280
+training/newProcessedFaces\Ahmed.1\img (19).png 322 680 769 1280
+training/newProcessedFaces\Ahmed.1\img (2).png 329 683 789 1273
+training/newProcessedFaces\Ahmed.1\img (20).png 348 707 796 1298
+training/newProcessedFaces\Ahmed.1\img (21).png 348 707 796 1298
+training/newProcessedFaces\Ahmed.1\img (22).png 371 659 820 1263
+training/newProcessedFaces\Ahmed.1\img (23).png 371 659 820 1263
+training/newProcessedFaces\Ahmed.1\img (24).png 426 624 790 1105
+training/newProcessedFaces\Ahmed.1\img (25).png 503 646 867 1103
+training/newProcessedFaces\Ahmed.1\img (26).png 406 638 753 1097
+training/newProcessedFaces\Ahmed.1\img (27).png 406 638 753 1097
+training/newProcessedFaces\Ahmed.1\img (28).png 439 628 792 1094
+training/newProcessedFaces\Ahmed.1\img (29).png 439 628 792 1094
+training/newProcessedFaces\Ahmed.1\img (3).png 329 683 789 1273
+training/newProcessedFaces\Ahmed.1\img (30).png 446 636 784 1051
+training/newProcessedFaces\Ahmed.1\img (31).png 446 636 784 1051
+training/newProcessedFaces\Ahmed.1\img (32).png 428 642 781 1077
+training/newProcessedFaces\Ahmed.1\img (33).png 428 642 781 1077
+training/newProcessedFaces\Ahmed.1\img (34).png 503 646 867 1103
+training/newProcessedFaces\Ahmed.1\img (35).png 446 639 800 1109
+training/newProcessedFaces\Ahmed.1\img (36).png 446 637 798 1114
+training/newProcessedFaces\Ahmed.1\img (37).png 446 637 798 1114
+training/newProcessedFaces\Ahmed.1\img (38).png 410 631 769 1097
+training/newProcessedFaces\Ahmed.1\img (39).png 410 631 769 1097
+training/newProcessedFaces\Ahmed.1\img (4).png 438 676 879 1257
+training/newProcessedFaces\Ahmed.1\img (40).png 449 630 797 1102
+training/newProcessedFaces\Ahmed.1\img (41).png 449 630 797 1102
+training/newProcessedFaces\Ahmed.1\img (42).png 446 639 800 1109
+training/newProcessedFaces\Ahmed.1\img (43).png 518 636 853 1081
+training/newProcessedFaces\Ahmed.1\img (44).png 441 631 806 1105
+training/newProcessedFaces\Ahmed.1\img (45).png 441 631 806 1105
+training/newProcessedFaces\Ahmed.1\img (46).png 439 624 805 1109
+training/newProcessedFaces\Ahmed.1\img (47).png 439 624 805 1109
+training/newProcessedFaces\Ahmed.1\img (48).png 420 637 772 1103
+training/newProcessedFaces\Ahmed.1\img (49).png 420 637 772 1103
+training/newProcessedFaces\Ahmed.1\img (5).png 438 676 879 1257
+training/newProcessedFaces\Ahmed.1\img (50).png 426 638 770 1098
+training/newProcessedFaces\Ahmed.1\img (51).png 426 638 770 1098
+training/newProcessedFaces\Ahmed.1\img (52).png 518 636 853 1081
+training/newProcessedFaces\Ahmed.1\img (53).png 472 639 823 1120
+training/newProcessedFaces\Ahmed.1\img (54).png 446 631 811 1108
+training/newProcessedFaces\Ahmed.1\img (55).png 446 631 811 1108
+training/newProcessedFaces\Ahmed.1\img (56).png 472 639 823 1120
+training/newProcessedFaces\Ahmed.1\img (6).png 340 719 800 1308
+training/newProcessedFaces\Ahmed.1\IMG_20220605_090408.png 959 1593 2386 3517
+training/newProcessedFaces\Ahmed.1\IMG_20220605_090410.png 780 1648 2214 3555
+training/newProcessedFaces\Ahmed.1\IMG_20220605_090411.png 947 1659 2355 3566
+training/newProcessedFaces\Ahmed.1\IMG_20220605_090413.png 1081 1692 2562 3525
+training/newProcessedFaces\Ahmed.1\IMG_20220605_090414.png 886 1652 2356 3617
+training/newProcessedFaces\Ahmed.1\IMG_20220605_090415.png 904 1683 2319 3516
+training/newProcessedFaces\Ahmed.1\IMG_20220605_090416.png 905 1664 2313 3473
+training/newProcessedFaces\Ahmed.1\IMG_20220605_090418.png 1090 1700 2530 3501
+training/newProcessedFaces\Ahmed.1\IMG_20220605_090424.png 1256 1872 2097 2973
+training/newProcessedFaces\Ahmed.1\IMG_20220605_090425.png 1173 1894 2013 2973
+training/newProcessedFaces\Ahmed.1\IMG_20220605_090426.png 1185 1871 2037 2964
+training/newProcessedFaces\Ahmed.1\IMG_20220605_090427.png 1231 1868 2104 2994
+training/newProcessedFaces\Ahmed.1\IMG_20220605_090428.png 1222 1881 2085 2996
+training/newProcessedFaces\Ahmed.1\IMG_20220605_090429.png 1228 1874 2116 3051
+training/newProcessedFaces\Ahmed.1\IMG_20220605_090430.png 1224 1903 2106 3057
+training/newProcessedFaces\Ahmed.1\IMG_20220605_090433.png 1216 1922 2110 3069
+training/newProcessedFaces\Ahmed.1\IMG_20220605_090435.png 1202 1906 2101 3051
+training/newProcessedFaces\Ahmed.1\IMG_20220605_090436.png 1211 1948 2064 3025
+training/newProcessedFaces\Ahmed.1\IMG_20220605_090437.png 1212 1893 2095 3077
+training/newProcessedFaces\Ahmed.1\IMG_20220605_090438.png 1218 1930 2077 3008
+training/newProcessedFaces\Ahmed.1\IMG_20220605_090440.png 1163 1889 2084 3053
+training/newProcessedFaces\Ahmed.1\IMG_20220605_090442.png 1194 1881 2096 3072
+training/newProcessedFaces\Ahmed.1\IMG_20220605_090443.png 1234 1889 2123 3043
+training/newProcessedFaces\Ahmed.1\IMG_20220605_090445.png 1217 1916 2061 3027
+training/newProcessedFaces\Ahmed.1\IMG_20220605_090446.png 1199 1907 2093 3051
+training/newProcessedFaces\Ahmed.1\IMG_20220605_090448.png 1256 1919 2117 3038
+training/newProcessedFaces\Ahmed.1\IMG_20220605_090449.png 1169 1924 2089 3038
+training/newProcessedFaces\Ahmed.1\IMG_20220605_090451.png 1288 1909 2154 3014
+training/newProcessedFaces\Ahmed.1\IMG_20220605_090452.png 1206 1864 2094 3014
+training/newProcessedFaces\Ahmed.1\IMG_20220605_090453.png 1170 1920 2025 2998
+training/newProcessedFaces\Ahmed.1\IMG_20220605_090455.png 1205 1839 2094 3019
+training/newProcessedFaces\Ahmed.1\IMG_20220605_090456.png 1222 1896 2101 3013
+training/newProcessedFaces\Ahmed.1\IMG_20220605_090457.png 1336 1869 2204 2976
+training/newProcessedFaces\Ahmed.1\IMG_20220605_090459.png 1223 1855 2107 2995
+training/newProcessedFaces\Ahmed.1\IMG_20220605_090500.png 1359 1896 2187 2977
+training/newProcessedFaces\Ahmed.1\IMG_20220605_090501.png 1232 1882 2109 2995
+training/newProcessedFaces\Ahmed.1\IMG_20220605_090503.png 1153 1879 1992 2946
+training/newProcessedFaces\Ahmed.1\IMG_20220605_090504.png 1206 1876 2053 2969
+training/newProcessedFaces\Ahmed.1\IMG_20220605_090505.png 1208 1861 2092 2966
+training/newProcessedFaces\Ahmed.1\IMG_20220605_090510.png 1224 1920 2101 3082
+training/newProcessedFaces\Bary.3\img (1).png 263 340 905 1196
+training/newProcessedFaces\Bary.3\img (10).png 305 333 927 1141
+training/newProcessedFaces\Bary.3\img (11).png 305 333 927 1141
+training/newProcessedFaces\Bary.3\img (12).png 305 333 927 1141
+training/newProcessedFaces\Bary.3\img (13).png 305 333 927 1141
+training/newProcessedFaces\Bary.3\img (14).png 305 333 927 1141
+training/newProcessedFaces\Bary.3\img (15).png 305 333 927 1141
+training/newProcessedFaces\Bary.3\img (16).png 305 333 927 1141
+training/newProcessedFaces\Bary.3\img (17).png 305 333 927 1141
+training/newProcessedFaces\Bary.3\img (18).png 305 333 927 1141
+training/newProcessedFaces\Bary.3\img (19).png 305 333 927 1141
+training/newProcessedFaces\Bary.3\img (2).png 263 340 905 1196
+training/newProcessedFaces\Bary.3\img (20).png 305 333 927 1141
+training/newProcessedFaces\Bary.3\img (21).png 305 333 927 1141
+training/newProcessedFaces\Bary.3\img (22).png 336 309 878 1056
+training/newProcessedFaces\Bary.3\img (23).png 336 309 878 1056
+training/newProcessedFaces\Bary.3\img (24).png 336 309 878 1056
+training/newProcessedFaces\Bary.3\img (25).png 336 309 878 1056
+training/newProcessedFaces\Bary.3\img (26).png 336 309 878 1056
+training/newProcessedFaces\Bary.3\img (27).png 336 309 878 1056
+training/newProcessedFaces\Bary.3\img (28).png 336 309 878 1056
+training/newProcessedFaces\Bary.3\img (29).png 336 309 878 1056
+training/newProcessedFaces\Bary.3\img (3).png 263 340 905 1196
+training/newProcessedFaces\Bary.3\img (30).png 336 309 878 1056
+training/newProcessedFaces\Bary.3\img (31).png 336 309 878 1056
+training/newProcessedFaces\Bary.3\img (32).png 336 309 878 1056
+training/newProcessedFaces\Bary.3\img (4).png 263 340 905 1196
+training/newProcessedFaces\Bary.3\img (5).png 263 340 905 1196
+training/newProcessedFaces\Bary.3\img (6).png 263 340 905 1196
+training/newProcessedFaces\Bary.3\img (7).png 263 340 905 1196
+training/newProcessedFaces\Bary.3\img (8).png 263 340 905 1196
+training/newProcessedFaces\Bary.3\img (9).png 263 340 905 1196
+training/newProcessedFaces\Dumdum.4\img (1).png 218 321 703 952
+training/newProcessedFaces\Dumdum.4\img (10).png 106 283 525 893
+training/newProcessedFaces\Dumdum.4\img (11).png 106 283 525 893
+training/newProcessedFaces\Dumdum.4\img (12).png 106 283 525 893
+training/newProcessedFaces\Dumdum.4\img (13).png 106 283 525 893
+training/newProcessedFaces\Dumdum.4\img (14).png 106 283 525 893
+training/newProcessedFaces\Dumdum.4\img (15).png 106 283 525 893
+training/newProcessedFaces\Dumdum.4\img (16).png 106 283 525 893
+training/newProcessedFaces\Dumdum.4\img (17).png 106 283 525 893
+training/newProcessedFaces\Dumdum.4\img (18).png 106 283 525 893
+training/newProcessedFaces\Dumdum.4\img (19).png 106 283 525 893
+training/newProcessedFaces\Dumdum.4\img (2).png 218 321 703 952
+training/newProcessedFaces\Dumdum.4\img (20).png 106 283 525 893
+training/newProcessedFaces\Dumdum.4\img (21).png 106 283 525 893
+training/newProcessedFaces\Dumdum.4\img (22).png 344 287 808 930
+training/newProcessedFaces\Dumdum.4\img (23).png 344 287 808 930
+training/newProcessedFaces\Dumdum.4\img (24).png 344 287 808 930
+training/newProcessedFaces\Dumdum.4\img (25).png 344 287 808 930
+training/newProcessedFaces\Dumdum.4\img (26).png 344 287 808 930
+training/newProcessedFaces\Dumdum.4\img (27).png 344 287 808 930
+training/newProcessedFaces\Dumdum.4\img (28).png 344 287 808 930
+training/newProcessedFaces\Dumdum.4\img (29).png 344 287 808 930
+training/newProcessedFaces\Dumdum.4\img (3).png 218 321 703 952
+training/newProcessedFaces\Dumdum.4\img (30).png 344 287 808 930
+training/newProcessedFaces\Dumdum.4\img (31).png 344 287 808 930
+training/newProcessedFaces\Dumdum.4\img (32).png 344 287 808 930
+training/newProcessedFaces\Dumdum.4\img (33).png 344 287 808 930
+training/newProcessedFaces\Dumdum.4\img (34).png 344 287 808 930
+training/newProcessedFaces\Dumdum.4\img (35).png 344 287 808 930
+training/newProcessedFaces\Dumdum.4\img (36).png 106 283 525 893
+training/newProcessedFaces\Dumdum.4\img (37).png 200 539 713 1113
+training/newProcessedFaces\Dumdum.4\img (38).png 200 539 713 1113
+training/newProcessedFaces\Dumdum.4\img (39).png 200 539 713 1113
+training/newProcessedFaces\Dumdum.4\img (4).png 218 321 703 952
+training/newProcessedFaces\Dumdum.4\img (40).png 200 539 713 1113
+training/newProcessedFaces\Dumdum.4\img (41).png 200 539 713 1113
+training/newProcessedFaces\Dumdum.4\img (42).png 200 539 713 1113
+training/newProcessedFaces\Dumdum.4\img (43).png 200 539 713 1113
+training/newProcessedFaces\Dumdum.4\img (44).png 200 539 713 1113
+training/newProcessedFaces\Dumdum.4\img (45).png 200 539 713 1113
+training/newProcessedFaces\Dumdum.4\img (46).png 200 539 713 1113
+training/newProcessedFaces\Dumdum.4\img (47).png 200 539 713 1113
+training/newProcessedFaces\Dumdum.4\img (48).png 200 539 713 1113
+training/newProcessedFaces\Dumdum.4\img (49).png 200 539 713 1113
+training/newProcessedFaces\Dumdum.4\img (5).png 218 321 703 952
+training/newProcessedFaces\Dumdum.4\img (50).png 200 539 713 1113
+training/newProcessedFaces\Dumdum.4\img (6).png 218 321 703 952
+training/newProcessedFaces\Dumdum.4\img (7).png 218 321 703 952
+training/newProcessedFaces\Dumdum.4\img (8).png 218 321 703 952
+training/newProcessedFaces\Dumdum.4\img (9).png 106 283 525 893
+training/newProcessedFaces\Jana.8\img (1).png 361 353 794 976
+training/newProcessedFaces\Jana.8\img (10).png 361 353 794 976
+training/newProcessedFaces\Jana.8\img (11).png 361 353 794 976
+training/newProcessedFaces\Jana.8\img (12).png 361 353 794 976
+training/newProcessedFaces\Jana.8\img (13).png 361 353 794 976
+training/newProcessedFaces\Jana.8\img (14).png 316 296 751 935
+training/newProcessedFaces\Jana.8\img (15).png 316 296 751 935
+training/newProcessedFaces\Jana.8\img (16).png 316 296 751 935
+training/newProcessedFaces\Jana.8\img (17).png 484 317 837 899
+training/newProcessedFaces\Jana.8\img (18).png 484 317 837 899
+training/newProcessedFaces\Jana.8\img (19).png 484 317 837 899
+training/newProcessedFaces\Jana.8\img (2).png 361 353 794 976
+training/newProcessedFaces\Jana.8\img (20).png 316 296 751 935
+training/newProcessedFaces\Jana.8\img (21).png 316 296 751 935
+training/newProcessedFaces\Jana.8\img (22).png 484 317 837 899
+training/newProcessedFaces\Jana.8\img (23).png 484 317 837 899
+training/newProcessedFaces\Jana.8\img (24).png 316 296 751 935
+training/newProcessedFaces\Jana.8\img (25).png 316 296 751 935
+training/newProcessedFaces\Jana.8\img (26).png 484 317 837 899
+training/newProcessedFaces\Jana.8\img (27).png 484 317 837 899
+training/newProcessedFaces\Jana.8\img (28).png 316 296 751 935
+training/newProcessedFaces\Jana.8\img (29).png 316 296 751 935
+training/newProcessedFaces\Jana.8\img (3).png 361 353 794 976
+training/newProcessedFaces\Jana.8\img (30).png 484 317 837 899
+training/newProcessedFaces\Jana.8\img (31).png 484 317 837 899
+training/newProcessedFaces\Jana.8\img (32).png 316 296 751 935
+training/newProcessedFaces\Jana.8\img (33).png 316 296 751 935
+training/newProcessedFaces\Jana.8\img (34).png 484 317 837 899
+training/newProcessedFaces\Jana.8\img (35).png 484 317 837 899
+training/newProcessedFaces\Jana.8\img (36).png 316 296 751 935
+training/newProcessedFaces\Jana.8\img (37).png 316 296 751 935
+training/newProcessedFaces\Jana.8\img (38).png 316 296 751 935
+training/newProcessedFaces\Jana.8\img (39).png 484 317 837 899
+training/newProcessedFaces\Jana.8\img (4).png 361 353 794 976
+training/newProcessedFaces\Jana.8\img (40).png 361 353 794 976
+training/newProcessedFaces\Jana.8\img (41).png 437 402 791 877
+training/newProcessedFaces\Jana.8\img (42).png 437 402 791 877
+training/newProcessedFaces\Jana.8\img (43).png 437 402 791 877
+training/newProcessedFaces\Jana.8\img (44).png 437 402 791 877
+training/newProcessedFaces\Jana.8\img (45).png 437 402 791 877
+training/newProcessedFaces\Jana.8\img (46).png 437 402 791 877
+training/newProcessedFaces\Jana.8\img (47).png 437 402 791 877
+training/newProcessedFaces\Jana.8\img (48).png 437 402 791 877
+training/newProcessedFaces\Jana.8\img (49).png 437 402 791 877
+training/newProcessedFaces\Jana.8\img (5).png 361 353 794 976
+training/newProcessedFaces\Jana.8\img (50).png 437 402 791 877
+training/newProcessedFaces\Jana.8\img (6).png 361 353 794 976
+training/newProcessedFaces\Jana.8\img (7).png 361 353 794 976
+training/newProcessedFaces\Jana.8\img (8).png 361 353 794 976
+training/newProcessedFaces\Jana.8\img (9).png 361 353 794 976
+training/newProcessedFaces\Kenzy.9\img (1).png 450 308 773 777
+training/newProcessedFaces\Kenzy.9\img (10).png 450 308 773 777
+training/newProcessedFaces\Kenzy.9\img (11).png 450 308 773 777
+training/newProcessedFaces\Kenzy.9\img (12).png 450 308 773 777
+training/newProcessedFaces\Kenzy.9\img (13).png 450 308 773 777
+training/newProcessedFaces\Kenzy.9\img (14).png 450 308 773 777
+training/newProcessedFaces\Kenzy.9\img (15).png 450 308 773 777
+training/newProcessedFaces\Kenzy.9\img (16).png 450 308 773 777
+training/newProcessedFaces\Kenzy.9\img (17).png 450 308 773 777
+training/newProcessedFaces\Kenzy.9\img (18).png 450 308 773 777
+training/newProcessedFaces\Kenzy.9\img (19).png 475 447 771 882
+training/newProcessedFaces\Kenzy.9\img (2).png 442 302 769 779
+training/newProcessedFaces\Kenzy.9\img (20).png 475 447 771 882
+training/newProcessedFaces\Kenzy.9\img (21).png 475 447 771 882
+training/newProcessedFaces\Kenzy.9\img (22).png 475 447 771 882
+training/newProcessedFaces\Kenzy.9\img (23).png 475 447 771 882
+training/newProcessedFaces\Kenzy.9\img (24).png 475 447 771 882
+training/newProcessedFaces\Kenzy.9\img (25).png 475 447 771 882
+training/newProcessedFaces\Kenzy.9\img (26).png 475 447 771 882
+training/newProcessedFaces\Kenzy.9\img (27).png 475 447 771 882
+training/newProcessedFaces\Kenzy.9\img (28).png 475 447 771 882
+training/newProcessedFaces\Kenzy.9\img (29).png 475 447 771 882
+training/newProcessedFaces\Kenzy.9\img (3).png 442 302 769 779
+training/newProcessedFaces\Kenzy.9\img (30).png 475 447 771 882
+training/newProcessedFaces\Kenzy.9\img (31).png 475 447 771 882
+training/newProcessedFaces\Kenzy.9\img (32).png 475 447 771 882
+training/newProcessedFaces\Kenzy.9\img (33).png 434 411 779 884
+training/newProcessedFaces\Kenzy.9\img (34).png 434 411 779 884
+training/newProcessedFaces\Kenzy.9\img (35).png 434 411 779 884
+training/newProcessedFaces\Kenzy.9\img (36).png 434 411 779 884
+training/newProcessedFaces\Kenzy.9\img (37).png 434 411 779 884
+training/newProcessedFaces\Kenzy.9\img (38).png 434 411 779 884
+training/newProcessedFaces\Kenzy.9\img (39).png 434 411 779 884
+training/newProcessedFaces\Kenzy.9\img (4).png 452 309 776 778
+training/newProcessedFaces\Kenzy.9\img (40).png 434 411 779 884
+training/newProcessedFaces\Kenzy.9\img (41).png 434 411 779 884
+training/newProcessedFaces\Kenzy.9\img (42).png 434 411 779 884
+training/newProcessedFaces\Kenzy.9\img (43).png 434 411 779 884
+training/newProcessedFaces\Kenzy.9\img (44).png 434 411 779 884
+training/newProcessedFaces\Kenzy.9\img (45).png 434 411 779 884
+training/newProcessedFaces\Kenzy.9\img (46).png 434 411 779 884
+training/newProcessedFaces\Kenzy.9\img (47).png 434 411 779 884
+training/newProcessedFaces\Kenzy.9\img (48).png 434 411 779 884
+training/newProcessedFaces\Kenzy.9\img (49).png 434 411 779 884
+training/newProcessedFaces\Kenzy.9\img (5).png 452 309 776 778
+training/newProcessedFaces\Kenzy.9\img (50).png 434 411 779 884
+training/newProcessedFaces\Kenzy.9\img (6).png 454 321 776 770
+training/newProcessedFaces\Kenzy.9\img (7).png 454 321 776 770
+training/newProcessedFaces\Kenzy.9\img (8).png 450 308 773 777
+training/newProcessedFaces\Kenzy.9\img (9).png 450 308 773 777
+training/newProcessedFaces\Mayer.10\img (1).png 375 435 743 956
+training/newProcessedFaces\Mayer.10\img (10).png 413 356 754 779
+training/newProcessedFaces\Mayer.10\img (11).png 413 356 754 779
+training/newProcessedFaces\Mayer.10\img (12).png 413 356 754 779
+training/newProcessedFaces\Mayer.10\img (13).png 413 356 754 779
+training/newProcessedFaces\Mayer.10\img (14).png 413 356 754 779
+training/newProcessedFaces\Mayer.10\img (15).png 413 356 754 779
+training/newProcessedFaces\Mayer.10\img (16).png 394 394 765 898
+training/newProcessedFaces\Mayer.10\img (17).png 394 394 765 898
+training/newProcessedFaces\Mayer.10\img (18).png 394 394 765 898
+training/newProcessedFaces\Mayer.10\img (19).png 394 394 765 898
+training/newProcessedFaces\Mayer.10\img (2).png 375 435 743 956
+training/newProcessedFaces\Mayer.10\img (20).png 394 394 765 898
+training/newProcessedFaces\Mayer.10\img (21).png 394 394 765 898
+training/newProcessedFaces\Mayer.10\img (22).png 430 418 740 884
+training/newProcessedFaces\Mayer.10\img (23).png 430 418 740 884
+training/newProcessedFaces\Mayer.10\img (24).png 394 394 765 898
+training/newProcessedFaces\Mayer.10\img (25).png 394 394 765 898
+training/newProcessedFaces\Mayer.10\img (26).png 430 418 740 884
+training/newProcessedFaces\Mayer.10\img (27).png 430 418 740 884
+training/newProcessedFaces\Mayer.10\img (28).png 430 418 740 884
+training/newProcessedFaces\Mayer.10\img (29).png 394 394 765 898
+training/newProcessedFaces\Mayer.10\img (3).png 375 435 743 956
+training/newProcessedFaces\Mayer.10\img (30).png 394 394 765 898
+training/newProcessedFaces\Mayer.10\img (31).png 430 418 740 884
+training/newProcessedFaces\Mayer.10\img (32).png 394 394 765 898
+training/newProcessedFaces\Mayer.10\img (33).png 430 418 740 884
+training/newProcessedFaces\Mayer.10\img (34).png 375 435 743 956
+training/newProcessedFaces\Mayer.10\img (35).png 375 435 743 956
+training/newProcessedFaces\Mayer.10\img (36).png 375 435 743 956
+training/newProcessedFaces\Mayer.10\img (37).png 375 435 743 956
+training/newProcessedFaces\Mayer.10\img (38).png 375 435 743 956
+training/newProcessedFaces\Mayer.10\img (39).png 375 435 743 956
+training/newProcessedFaces\Mayer.10\img (4).png 413 356 754 779
+training/newProcessedFaces\Mayer.10\img (40).png 375 435 743 956
+training/newProcessedFaces\Mayer.10\img (41).png 375 435 743 956
+training/newProcessedFaces\Mayer.10\img (42).png 375 435 743 956
+training/newProcessedFaces\Mayer.10\img (43).png 375 435 743 956
+training/newProcessedFaces\Mayer.10\img (44).png 375 435 743 956
+training/newProcessedFaces\Mayer.10\img (45).png 375 435 743 956
+training/newProcessedFaces\Mayer.10\img (46).png 375 435 743 956
+training/newProcessedFaces\Mayer.10\img (47).png 375 435 743 956
+training/newProcessedFaces\Mayer.10\img (48).png 375 435 743 956
+training/newProcessedFaces\Mayer.10\img (49).png 375 435 743 956
+training/newProcessedFaces\Mayer.10\img (5).png 413 356 754 779
+training/newProcessedFaces\Mayer.10\img (50).png 375 435 743 956
+training/newProcessedFaces\Mayer.10\img (6).png 413 356 754 779
+training/newProcessedFaces\Mayer.10\img (7).png 413 356 754 779
+training/newProcessedFaces\Mayer.10\img (8).png 413 356 754 779
+training/newProcessedFaces\Mayer.10\img (9).png 413 356 754 779
+training/newProcessedFaces\Mohamed.14\img (1).png 251 214 852 1031
+training/newProcessedFaces\Mohamed.14\img (10).png 251 214 852 1031
+training/newProcessedFaces\Mohamed.14\img (11).png 325 343 865 1052
+training/newProcessedFaces\Mohamed.14\img (12).png 325 343 865 1052
+training/newProcessedFaces\Mohamed.14\img (13).png 325 343 865 1052
+training/newProcessedFaces\Mohamed.14\img (14).png 325 343 865 1052
+training/newProcessedFaces\Mohamed.14\img (15).png 325 343 865 1052
+training/newProcessedFaces\Mohamed.14\img (16).png 325 343 865 1052
+training/newProcessedFaces\Mohamed.14\img (17).png 325 343 865 1052
+training/newProcessedFaces\Mohamed.14\img (18).png 325 343 865 1052
+training/newProcessedFaces\Mohamed.14\img (19).png 325 343 865 1052
+training/newProcessedFaces\Mohamed.14\img (2).png 251 214 852 1031
+training/newProcessedFaces\Mohamed.14\img (20).png 325 343 865 1052
+training/newProcessedFaces\Mohamed.14\img (21).png 325 343 865 1052
+training/newProcessedFaces\Mohamed.14\img (22).png 325 343 865 1052
+training/newProcessedFaces\Mohamed.14\img (23).png 325 343 865 1052
+training/newProcessedFaces\Mohamed.14\img (24).png 325 343 865 1052
+training/newProcessedFaces\Mohamed.14\img (25).png 325 343 865 1052
+training/newProcessedFaces\Mohamed.14\img (26).png 325 343 865 1052
+training/newProcessedFaces\Mohamed.14\img (27).png 325 343 865 1052
+training/newProcessedFaces\Mohamed.14\img (28).png 325 343 865 1052
+training/newProcessedFaces\Mohamed.14\img (29).png 325 343 865 1052
+training/newProcessedFaces\Mohamed.14\img (3).png 251 214 852 1031
+training/newProcessedFaces\Mohamed.14\img (30).png 182 315 683 1006
+training/newProcessedFaces\Mohamed.14\img (31).png 182 315 683 1006
+training/newProcessedFaces\Mohamed.14\img (32).png 182 315 683 1006
+training/newProcessedFaces\Mohamed.14\img (33).png 182 315 683 1006
+training/newProcessedFaces\Mohamed.14\img (34).png 182 315 683 1006
+training/newProcessedFaces\Mohamed.14\img (35).png 182 315 683 1006
+training/newProcessedFaces\Mohamed.14\img (36).png 182 315 683 1006
+training/newProcessedFaces\Mohamed.14\img (37).png 182 315 683 1006
+training/newProcessedFaces\Mohamed.14\img (38).png 182 315 683 1006
+training/newProcessedFaces\Mohamed.14\img (39).png 182 315 683 1006
+training/newProcessedFaces\Mohamed.14\img (4).png 251 214 852 1031
+training/newProcessedFaces\Mohamed.14\img (40).png 182 315 683 1006
+training/newProcessedFaces\Mohamed.14\img (41).png 182 315 683 1006
+training/newProcessedFaces\Mohamed.14\img (42).png 182 315 683 1006
+training/newProcessedFaces\Mohamed.14\img (43).png 182 315 683 1006
+training/newProcessedFaces\Mohamed.14\img (44).png 182 315 683 1006
+training/newProcessedFaces\Mohamed.14\img (45).png 182 315 683 1006
+training/newProcessedFaces\Mohamed.14\img (46).png 182 315 683 1006
+training/newProcessedFaces\Mohamed.14\img (47).png 182 315 683 1006
+training/newProcessedFaces\Mohamed.14\img (48).png 182 315 683 1006
+training/newProcessedFaces\Mohamed.14\img (49).png 182 315 683 1006
+training/newProcessedFaces\Mohamed.14\img (5).png 251 214 852 1031
+training/newProcessedFaces\Mohamed.14\img (50).png 325 343 865 1052
+training/newProcessedFaces\Mohamed.14\img (6).png 251 214 852 1031
+training/newProcessedFaces\Mohamed.14\img (7).png 251 214 852 1031
+training/newProcessedFaces\Mohamed.14\img (8).png 251 214 852 1031
+training/newProcessedFaces\Mohamed.14\img (9).png 251 214 852 1031
+training/newProcessedFaces\Nadeen.11\img (1).png 385 411 766 958
+training/newProcessedFaces\Nadeen.11\img (10).png 360 319 774 873
+training/newProcessedFaces\Nadeen.11\img (11).png 360 319 774 873
+training/newProcessedFaces\Nadeen.11\img (12).png 360 319 774 873
+training/newProcessedFaces\Nadeen.11\img (13).png 360 319 774 873
+training/newProcessedFaces\Nadeen.11\img (14).png 360 319 774 873
+training/newProcessedFaces\Nadeen.11\img (15).png 360 319 774 873
+training/newProcessedFaces\Nadeen.11\img (16).png 360 319 774 873
+training/newProcessedFaces\Nadeen.11\img (17).png 360 319 774 873
+training/newProcessedFaces\Nadeen.11\img (18).png 360 319 774 873
+training/newProcessedFaces\Nadeen.11\img (19).png 360 319 774 873
+training/newProcessedFaces\Nadeen.11\img (2).png 385 411 766 958
+training/newProcessedFaces\Nadeen.11\img (20).png 360 319 774 873
+training/newProcessedFaces\Nadeen.11\img (21).png 360 319 774 873
+training/newProcessedFaces\Nadeen.11\img (22).png 360 319 774 873
+training/newProcessedFaces\Nadeen.11\img (23).png 360 319 774 873
+training/newProcessedFaces\Nadeen.11\img (24).png 360 319 774 873
+training/newProcessedFaces\Nadeen.11\img (25).png 360 319 774 873
+training/newProcessedFaces\Nadeen.11\img (26).png 360 319 774 873
+training/newProcessedFaces\Nadeen.11\img (27).png 360 319 774 873
+training/newProcessedFaces\Nadeen.11\img (28).png 360 319 774 873
+training/newProcessedFaces\Nadeen.11\img (29).png 385 411 766 958
+training/newProcessedFaces\Nadeen.11\img (3).png 385 411 766 958
+training/newProcessedFaces\Nadeen.11\img (30).png 385 411 766 958
+training/newProcessedFaces\Nadeen.11\img (31).png 385 411 766 958
+training/newProcessedFaces\Nadeen.11\img (32).png 385 411 766 958
+training/newProcessedFaces\Nadeen.11\img (33).png 385 411 766 958
+training/newProcessedFaces\Nadeen.11\img (34).png 385 411 766 958
+training/newProcessedFaces\Nadeen.11\img (35).png 385 411 766 958
+training/newProcessedFaces\Nadeen.11\img (36).png 385 411 766 958
+training/newProcessedFaces\Nadeen.11\img (37).png 385 411 766 958
+training/newProcessedFaces\Nadeen.11\img (38).png 385 411 766 958
+training/newProcessedFaces\Nadeen.11\img (39).png 385 411 766 958
+training/newProcessedFaces\Nadeen.11\img (4).png 360 319 774 873
+training/newProcessedFaces\Nadeen.11\img (40).png 385 411 766 958
+training/newProcessedFaces\Nadeen.11\img (41).png 385 411 766 958
+training/newProcessedFaces\Nadeen.11\img (42).png 385 411 766 958
+training/newProcessedFaces\Nadeen.11\img (43).png 385 411 766 958
+training/newProcessedFaces\Nadeen.11\img (44).png 385 411 766 958
+training/newProcessedFaces\Nadeen.11\img (45).png 385 411 766 958
+training/newProcessedFaces\Nadeen.11\img (46).png 385 411 766 958
+training/newProcessedFaces\Nadeen.11\img (47).png 385 411 766 958
+training/newProcessedFaces\Nadeen.11\img (48).png 385 411 766 958
+training/newProcessedFaces\Nadeen.11\img (49).png 385 411 766 958
+training/newProcessedFaces\Nadeen.11\img (5).png 360 319 774 873
+training/newProcessedFaces\Nadeen.11\img (50).png 385 411 766 958
+training/newProcessedFaces\Nadeen.11\img (6).png 360 319 774 873
+training/newProcessedFaces\Nadeen.11\img (7).png 360 319 774 873
+training/newProcessedFaces\Nadeen.11\img (8).png 360 319 774 873
+training/newProcessedFaces\Nadeen.11\img (9).png 360 319 774 873
+training/newProcessedFaces\Roaa.2\img (1).png 76 150 602 874
+training/newProcessedFaces\Roaa.2\img (10).png 77 158 599 889
+training/newProcessedFaces\Roaa.2\img (11).png 77 158 599 889
+training/newProcessedFaces\Roaa.2\img (12).png 77 158 599 889
+training/newProcessedFaces\Roaa.2\img (13).png 22 156 565 891
+training/newProcessedFaces\Roaa.2\img (14).png 152 181 661 893
+training/newProcessedFaces\Roaa.2\img (15).png 152 181 661 893
+training/newProcessedFaces\Roaa.2\img (16).png 152 181 661 893
+training/newProcessedFaces\Roaa.2\img (17).png 211 172 673 877
+training/newProcessedFaces\Roaa.2\img (18).png 211 172 673 877
+training/newProcessedFaces\Roaa.2\img (19).png 211 172 673 877
+training/newProcessedFaces\Roaa.2\img (2).png 76 150 602 874
+training/newProcessedFaces\Roaa.2\img (20).png 211 172 673 877
+training/newProcessedFaces\Roaa.2\img (21).png 185 177 659 887
+training/newProcessedFaces\Roaa.2\img (22).png 185 177 659 887
+training/newProcessedFaces\Roaa.2\img (23).png 185 177 659 887
+training/newProcessedFaces\Roaa.2\img (24).png 185 177 659 887
+training/newProcessedFaces\Roaa.2\img (25).png 143 154 637 869
+training/newProcessedFaces\Roaa.2\img (26).png 143 154 637 869
+training/newProcessedFaces\Roaa.2\img (27).png 143 154 637 869
+training/newProcessedFaces\Roaa.2\img (28).png 143 154 637 869
+training/newProcessedFaces\Roaa.2\img (29).png 88 150 605 859
+training/newProcessedFaces\Roaa.2\img (3).png 56 162 569 844
+training/newProcessedFaces\Roaa.2\img (30).png 88 150 605 859
+training/newProcessedFaces\Roaa.2\img (31).png 20 158 560 879
+training/newProcessedFaces\Roaa.2\img (32).png 20 158 560 879
+training/newProcessedFaces\Roaa.2\img (33).png 20 158 560 879
+training/newProcessedFaces\Roaa.2\img (34).png 88 150 605 859
+training/newProcessedFaces\Roaa.2\img (35).png 29 188 537 865
+training/newProcessedFaces\Roaa.2\img (36).png 50 204 536 852
+training/newProcessedFaces\Roaa.2\img (37).png 50 204 536 852
+training/newProcessedFaces\Roaa.2\img (38).png 29 188 537 865
+training/newProcessedFaces\Roaa.2\img (39).png 9 179 516 856
+training/newProcessedFaces\Roaa.2\img (4).png 56 162 569 844
+training/newProcessedFaces\Roaa.2\img (40).png 9 179 475 856
+training/newProcessedFaces\Roaa.2\img (41).png 9 179 475 856
+training/newProcessedFaces\Roaa.2\img (42).png 9 179 516 856
+training/newProcessedFaces\Roaa.2\img (43).png 8 190 517 851
+training/newProcessedFaces\Roaa.2\img (44).png 8 190 517 851
+training/newProcessedFaces\Roaa.2\img (45).png 64 191 593 888
+training/newProcessedFaces\Roaa.2\img (46).png 115 208 613 888
+training/newProcessedFaces\Roaa.2\img (47).png 115 208 613 888
+training/newProcessedFaces\Roaa.2\img (48).png 64 191 593 888
+training/newProcessedFaces\Roaa.2\img (49).png 266 263 688 861
+training/newProcessedFaces\Roaa.2\img (5).png 59 159 536 823
+training/newProcessedFaces\Roaa.2\img (50).png 266 263 688 861
+training/newProcessedFaces\Roaa.2\img (6).png 59 159 536 823
+training/newProcessedFaces\Roaa.2\img (7).png 22 156 565 891
+training/newProcessedFaces\Roaa.2\img (8).png 22 156 565 891
+training/newProcessedFaces\Roaa.2\img (9).png 77 158 599 889
+training/newProcessedFaces\ibrhaim.7\img (1).png 229 366 683 981
+training/newProcessedFaces\ibrhaim.7\img (10).png 229 366 683 981
+training/newProcessedFaces\ibrhaim.7\img (11).png 229 366 683 981
+training/newProcessedFaces\ibrhaim.7\img (12).png 229 366 683 981
+training/newProcessedFaces\ibrhaim.7\img (13).png 229 366 683 981
+training/newProcessedFaces\ibrhaim.7\img (14).png 229 366 683 981
+training/newProcessedFaces\ibrhaim.7\img (15).png 128 354 520 875
+training/newProcessedFaces\ibrhaim.7\img (16).png 128 354 520 875
+training/newProcessedFaces\ibrhaim.7\img (17).png 128 354 520 875
+training/newProcessedFaces\ibrhaim.7\img (18).png 128 354 520 875
+training/newProcessedFaces\ibrhaim.7\img (19).png 128 354 520 875
+training/newProcessedFaces\ibrhaim.7\img (2).png 229 366 683 981
+training/newProcessedFaces\ibrhaim.7\img (20).png 128 354 520 875
+training/newProcessedFaces\ibrhaim.7\img (21).png 128 354 520 875
+training/newProcessedFaces\ibrhaim.7\img (22).png 128 354 520 875
+training/newProcessedFaces\ibrhaim.7\img (23).png 128 354 520 875
+training/newProcessedFaces\ibrhaim.7\img (24).png 128 354 520 875
+training/newProcessedFaces\ibrhaim.7\img (25).png 128 354 520 875
+training/newProcessedFaces\ibrhaim.7\img (26).png 128 354 520 875
+training/newProcessedFaces\ibrhaim.7\img (27).png 128 354 520 875
+training/newProcessedFaces\ibrhaim.7\img (28).png 128 354 520 875
+training/newProcessedFaces\ibrhaim.7\img (29).png 128 354 520 875
+training/newProcessedFaces\ibrhaim.7\img (3).png 229 366 683 981
+training/newProcessedFaces\ibrhaim.7\img (30).png 128 354 520 875
+training/newProcessedFaces\ibrhaim.7\img (31).png 128 354 520 875
+training/newProcessedFaces\ibrhaim.7\img (32).png 128 354 520 875
+training/newProcessedFaces\ibrhaim.7\img (33).png 90 383 427 823
+training/newProcessedFaces\ibrhaim.7\img (34).png 90 383 427 823
+training/newProcessedFaces\ibrhaim.7\img (35).png 90 383 427 823
+training/newProcessedFaces\ibrhaim.7\img (36).png 90 383 427 823
+training/newProcessedFaces\ibrhaim.7\img (37).png 90 383 427 823
+training/newProcessedFaces\ibrhaim.7\img (38).png 90 383 427 823
+training/newProcessedFaces\ibrhaim.7\img (39).png 90 383 427 823
+training/newProcessedFaces\ibrhaim.7\img (4).png 229 366 683 981
+training/newProcessedFaces\ibrhaim.7\img (40).png 90 383 427 823
+training/newProcessedFaces\ibrhaim.7\img (41).png 90 383 427 823
+training/newProcessedFaces\ibrhaim.7\img (42).png 90 383 427 823
+training/newProcessedFaces\ibrhaim.7\img (43).png 90 383 427 823
+training/newProcessedFaces\ibrhaim.7\img (44).png 90 383 427 823
+training/newProcessedFaces\ibrhaim.7\img (45).png 90 383 427 823
+training/newProcessedFaces\ibrhaim.7\img (46).png 90 383 427 823
+training/newProcessedFaces\ibrhaim.7\img (47).png 90 383 427 823
+training/newProcessedFaces\ibrhaim.7\img (48).png 90 383 427 823
+training/newProcessedFaces\ibrhaim.7\img (49).png 90 383 427 823
+training/newProcessedFaces\ibrhaim.7\img (5).png 229 366 683 981
+training/newProcessedFaces\ibrhaim.7\img (50).png 90 383 427 823
+training/newProcessedFaces\ibrhaim.7\img (6).png 229 366 683 981
+training/newProcessedFaces\ibrhaim.7\img (7).png 229 366 683 981
+training/newProcessedFaces\ibrhaim.7\img (8).png 229 366 683 981
+training/newProcessedFaces\ibrhaim.7\img (9).png 229 366 683 981
+training/newProcessedFaces\ibrhaim.7\IMG20220605050037.png 639 1411 2901 4273
+training/newProcessedFaces\ibrhaim.7\IMG20220605050039.png 1434 1312 3581 4070
+training/newProcessedFaces\ibrhaim.7\IMG20220605050044.png 1094 1454 3529 4372
+training/newProcessedFaces\ibrhaim.7\IMG20220605050046.png 1557 1500 3691 4288
+training/newProcessedFaces\ibrhaim.7\IMG20220605050048.png 615 1687 2723 4084
+training/newProcessedFaces\ibrhaim.7\IMG20220605050051.png 1080 1758 3569 5125
+training/newProcessedFaces\ibrhaim.7\IMG20220605050055.png 1161 1539 3444 4211
+training/newProcessedFaces\ibrhaim.7\IMG20220605050057.png 845 1601 3008 4176
+training/newProcessedFaces\ibrhaim.7\IMG20220605050103.png 891 1355 3060 4028
+training/newProcessedFaces\ibrhaim.7\IMG20220605050109.png 1160 2105 2828 4459
+training/newProcessedFaces\ibrhaim.7\IMG20220605050112.png 911 1925 2988 4439
+training/newProcessedFaces\ibrhaim.7\IMG20220605050118.png 945 1904 3127 4746
+training/newProcessedFaces\ibrhaim.7\IMG20220605050122.png 1038 1868 2982 4249
+training/newProcessedFaces\ibrhaim.7\IMG20220605050124.png 624 1776 2636 4240
+training/newProcessedFaces\ibrhaim.7\IMG20220605050339.png
+training/newProcessedFaces\ibrhaim.7\IMG20220605050343.png
+training/newProcessedFaces\ibrhaim.7\IMG20220605050347.png 1130 1981 2987 3900
+training/newProcessedFaces\ibrhaim.7\IMG20220605050352.png 1365 2131 2965 4050
+training/newProcessedFaces\ibrhaim.7\IMG20220605050506.png 1380 2428 3181 4503
+training/newProcessedFaces\ismail.13\img (1).png 202 267 711 967
+training/newProcessedFaces\ismail.13\img (10).png 243 227 785 966
+training/newProcessedFaces\ismail.13\img (11).png 243 227 785 966
+training/newProcessedFaces\ismail.13\img (12).png 243 227 785 966
+training/newProcessedFaces\ismail.13\img (13).png 337 310 867 1069
+training/newProcessedFaces\ismail.13\img (14).png 337 310 867 1069
+training/newProcessedFaces\ismail.13\img (15).png 282 291 844 1003
+training/newProcessedFaces\ismail.13\img (16).png 282 291 844 1003
+training/newProcessedFaces\ismail.13\img (17).png 282 291 844 1003
+training/newProcessedFaces\ismail.13\img (18).png 174 303 681 1035
+training/newProcessedFaces\ismail.13\img (19).png 182 292 710 982
+training/newProcessedFaces\ismail.13\img (2).png 202 267 711 967
+training/newProcessedFaces\ismail.13\img (20).png 182 292 710 982
+training/newProcessedFaces\ismail.13\img (21).png 182 292 710 982
+training/newProcessedFaces\ismail.13\img (22).png 182 292 710 982
+training/newProcessedFaces\ismail.13\img (23).png 217 286 691 860
+training/newProcessedFaces\ismail.13\img (24).png 217 286 691 860
+training/newProcessedFaces\ismail.13\img (25).png 217 286 691 860
+training/newProcessedFaces\ismail.13\img (26).png 217 286 691 860
+training/newProcessedFaces\ismail.13\img (27).png 281 255 855 1055
+training/newProcessedFaces\ismail.13\img (28).png 281 255 855 1055
+training/newProcessedFaces\ismail.13\img (29).png 281 255 855 1055
+training/newProcessedFaces\ismail.13\img (3).png 202 267 711 967
+training/newProcessedFaces\ismail.13\img (30).png 281 255 855 1055
+training/newProcessedFaces\ismail.13\img (31).png 105 246 632 1002
+training/newProcessedFaces\ismail.13\img (32).png 105 246 632 1002
+training/newProcessedFaces\ismail.13\img (33).png 105 246 632 1002
+training/newProcessedFaces\ismail.13\img (34).png 105 246 632 1002
+training/newProcessedFaces\ismail.13\img (35).png 0 249 534 997
+training/newProcessedFaces\ismail.13\img (36).png 0 249 534 997
+training/newProcessedFaces\ismail.13\img (37).png 0 249 534 997
+training/newProcessedFaces\ismail.13\img (38).png 0 249 534 997
+training/newProcessedFaces\ismail.13\img (39).png 337 310 867 1069
+training/newProcessedFaces\ismail.13\img (4).png 202 267 711 967
+training/newProcessedFaces\ismail.13\img (40).png 337 310 867 1069
+training/newProcessedFaces\ismail.13\img (41).png 337 310 867 1069
+training/newProcessedFaces\ismail.13\img (42).png 337 310 867 1069
+training/newProcessedFaces\ismail.13\img (43).png 217 286 691 860
+training/newProcessedFaces\ismail.13\img (44).png 217 286 691 860
+training/newProcessedFaces\ismail.13\img (45).png 217 286 691 860
+training/newProcessedFaces\ismail.13\img (46).png 217 286 691 860
+training/newProcessedFaces\ismail.13\img (47).png 148 294 685 1023
+training/newProcessedFaces\ismail.13\img (48).png 148 294 685 1023
+training/newProcessedFaces\ismail.13\img (49).png 148 294 685 1023
+training/newProcessedFaces\ismail.13\img (5).png 105 246 632 1002
+training/newProcessedFaces\ismail.13\img (50).png 148 294 685 1023
+training/newProcessedFaces\ismail.13\img (6).png 105 246 632 1002
+training/newProcessedFaces\ismail.13\img (7).png 105 246 632 1002
+training/newProcessedFaces\ismail.13\img (8).png 105 246 632 1002
+training/newProcessedFaces\ismail.13\img (9).png 243 227 785 966
+training/newProcessedFaces\rany.12\img (1).png 218 208 743 941
+training/newProcessedFaces\rany.12\img (10).png 164 197 630 829
+training/newProcessedFaces\rany.12\img (11).png 218 208 743 941
+training/newProcessedFaces\rany.12\img (12).png 365 193 851 894
+training/newProcessedFaces\rany.12\img (13).png 365 193 851 894
+training/newProcessedFaces\rany.12\img (14).png 365 193 851 894
+training/newProcessedFaces\rany.12\img (15).png 365 193 851 894
+training/newProcessedFaces\rany.12\img (16).png 365 193 851 894
+training/newProcessedFaces\rany.12\img (17).png 365 193 851 894
+training/newProcessedFaces\rany.12\img (18).png 365 193 851 894
+training/newProcessedFaces\rany.12\img (19).png 365 193 851 894
+training/newProcessedFaces\rany.12\img (2).png 218 208 743 941
+training/newProcessedFaces\rany.12\img (20).png 195 388 602 929
+training/newProcessedFaces\rany.12\img (21).png 195 388 602 929
+training/newProcessedFaces\rany.12\img (22).png 195 388 602 929
+training/newProcessedFaces\rany.12\img (23).png 195 388 602 929
+training/newProcessedFaces\rany.12\img (24).png 195 388 602 929
+training/newProcessedFaces\rany.12\img (25).png 195 388 602 929
+training/newProcessedFaces\rany.12\img (26).png 195 388 602 929
+training/newProcessedFaces\rany.12\img (27).png 377 373 805 1013
+training/newProcessedFaces\rany.12\img (28).png 377 373 805 1013
+training/newProcessedFaces\rany.12\img (29).png 377 373 805 1013
+training/newProcessedFaces\rany.12\img (3).png 218 208 743 941
+training/newProcessedFaces\rany.12\img (30).png 274 384 698 964
+training/newProcessedFaces\rany.12\img (31).png 274 384 698 964
+training/newProcessedFaces\rany.12\img (32).png 274 384 698 964
+training/newProcessedFaces\rany.12\img (33).png 377 373 805 1013
+training/newProcessedFaces\rany.12\img (34).png 377 373 805 1013
+training/newProcessedFaces\rany.12\img (35).png 274 384 698 964
+training/newProcessedFaces\rany.12\img (36).png 274 384 698 964
+training/newProcessedFaces\rany.12\img (37).png 377 373 805 1013
+training/newProcessedFaces\rany.12\img (38).png 377 373 805 1013
+training/newProcessedFaces\rany.12\img (39).png 274 384 698 964
+training/newProcessedFaces\rany.12\img (4).png 164 197 630 829
+training/newProcessedFaces\rany.12\img (40).png 274 384 698 964
+training/newProcessedFaces\rany.12\img (41).png 377 373 805 1013
+training/newProcessedFaces\rany.12\img (42).png 377 373 805 1013
+training/newProcessedFaces\rany.12\img (43).png 274 384 698 964
+training/newProcessedFaces\rany.12\img (44).png 274 384 698 964
+training/newProcessedFaces\rany.12\img (45).png 377 373 805 1013
+training/newProcessedFaces\rany.12\img (46).png 274 384 698 964
+training/newProcessedFaces\rany.12\img (47).png 195 388 602 929
+training/newProcessedFaces\rany.12\img (48).png 218 208 743 941
+training/newProcessedFaces\rany.12\img (49).png 218 208 743 941
+training/newProcessedFaces\rany.12\img (5).png 218 208 743 941
+training/newProcessedFaces\rany.12\img (50).png 218 208 743 941
+training/newProcessedFaces\rany.12\img (6).png 218 208 743 941
+training/newProcessedFaces\rany.12\img (7).png 218 208 743 941
+training/newProcessedFaces\rany.12\img (8).png 218 208 743 941
+training/newProcessedFaces\rany.12\img (9).png 164 197 630 829
