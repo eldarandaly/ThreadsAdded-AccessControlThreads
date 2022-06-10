@@ -305,7 +305,7 @@ def send():
         #frame= cv2.resize(frame,(0,0),fx=0.5,fy=0.5)
         a = pickle.dumps(frame)
         message = struct.pack("Q",len(a))+a
-        sb.sendall(message)
+        sb.sendall(message)'''
 
 def distanceSensor():
     while True:
@@ -322,8 +322,8 @@ def distanceSensor():
 #send_thread = thread.Thread(target=screen_Text,args=(screen_signal,))
 #send_thread.start()
 recv_thread = thread.Thread(target=receive)
-#dist_thread = thread.Thread(target=distanceSensor)
+dist_thread = thread.Thread(target=distanceSensor)
 # starting threads
 screen_signal=''
 recv_thread.start()
-#dist_thread.start()
+dist_thread.start()

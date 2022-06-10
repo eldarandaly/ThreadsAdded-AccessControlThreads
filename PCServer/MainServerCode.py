@@ -21,6 +21,8 @@ afm = socket.AF_INET
 #dfs
 
 
+ThisGate='2'
+
 # Server Ip/port
 user_b_ip = '192.168.1.2'
 user_b_port = 9001
@@ -50,7 +52,7 @@ data = b""
 payload_size = struct.calcsize("Q")
 
 modeldir = 'model/VGGFaces.pb'
-classifier_filename = 'training/class/Testing100 - Copy.pkl'
+classifier_filename = 'class/TEST_IP.pkl'
 npy='npy'
 train_img="training/TrainFolder50imgPerClass"
 
@@ -67,7 +69,7 @@ Personfile = 'PersonDetectionModel/coco.names'
 
 sendSignal='j'
 firstRunimg='training/TrainFolder50imgPerClass/Ahmed.1/img (1).jpeg'
-ENTER_CAMERA=0 #"rtsp://admin:TZZUNI@192.168.1.58:554/H.264"#0#'http://192.168.0.4:8080/video'
+ENTER_CAMERA=0#'http://192.168.1.44:8080/video' #"rtsp://admin:TZZUNI@192.168.1.58:554/H.264"#0#'http://192.168.1.44:8080/video'
 
 class FreshestFrame(threading.Thread):
     def __init__(self, capture, name='FreshestFrame'):
@@ -150,18 +152,20 @@ def receive(sendSignal):
         with tf.compat.v1.Session() as sess: 
 
             pnet, rnet, onet = detect_face.create_mtcnn(sess, npy)
-            minsize = 20  # minimum size of face
-            threshold = [0.7, 0.6, 0.6]  # three steps's threshold
-            factor = 0.5  # scale factor
+            minsize = 30  # minimum size of face
+            threshold = [0.7, 0.7, 0.7]  # three steps's threshold
+            factor = 0.709  # scale factor
             margin = 44
-            batch_size = 100  # 1000
+            batch_size = 4  # 1000
             image_size = 182  # 182
             input_image_size = 160  # 160
-            HumanNames = os.listdir(train_img)
-            HumanNames.sort()
+            
+            EmployeeModelNames = os.listdir(train_img)
+            EmployeeModelNames.sort()
 
             real_face_list = []
             fake_face_list = []
+            
             print('Loading Model')
             json_file = open('antispoofing_models/antispoofing_model.json', 'r')
             loaded_model_json = json_file.read()
@@ -211,7 +215,7 @@ def receive(sendSignal):
                 print("--pass Fitst run IMG")
             entering_camera = cv2.VideoCapture(ENTER_CAMERA)
             entering_camera_therad = FreshestFrame(entering_camera)
-            if not (entering_camera_therad.isOpened()):
+            if not (entering_camera.isOpened()):
                 print("no camera detected")
             else:
                 pass
@@ -234,7 +238,7 @@ def receive(sendSignal):
                 # frame = cv2.resize(frame, (0,0), fx=0.5, fy=0.5)'''
 
                 ret, frame = entering_camera_therad.read()  # Entering Cam
-
+                # frame = cv2.resize(frame, (0,0), fx=0.5, fy=0.5)
                 try:
                     bounding_boxes, _ = detect_face.detect_face(frame, minsize, pnet, rnet, onet, threshold, factor)    
                     
@@ -246,9 +250,9 @@ def receive(sendSignal):
                     isPerson=2
                     try:
                         if (indices.size ==0) or int(indices[0][0])== 0 :
-                            isPerson=0
-                        else:
                             isPerson=1
+                        else:
+                            isPerson=0
                     except:
                         pass
 
@@ -259,7 +263,7 @@ def receive(sendSignal):
                     Trying To use this methode to prevent the access of people hide there face 
 
                     '''
-                    if faceNum==0 and isPerson==0: 
+                    if faceNum==0 and isPerson==1: 
                         for i in indices:
                             acc=float(confs[0])
                             if acc>0.7:
@@ -272,7 +276,7 @@ def receive(sendSignal):
                                     cv2.rectangle(frame, (x,y),(x+w,h+y), color=(0, 255, 0), thickness=2)
                                     cv2.putText(frame,classNames[classIds[i][0]-1].upper(),(box[0]+10,box[1]+30),cv2.FONT_HERSHEY_COMPLEX,1,(0,255,0),2)
 
-                                    sendSignal='a' 
+                                    sendSignal='body' 
                                     # send_thread = thread.Thread(target=send,args=(sendSignal,))
                                     # send_thread.start()                                                
                                 else:
@@ -321,29 +325,38 @@ def receive(sendSignal):
                                 best_class_indices = np.argmax(predictions, axis=1)
 
                                 best_class_probabilities = predictions[np.arange(len(best_class_indices)), best_class_indices]
-                                print(best_class_indices,best_class_probabilities)
+                                # print(best_class_indices,best_class_probabilities)
                                 face = frame[ymin:ymax, xmin:xmax]
-                                resized_face = cv2.resize(face, (160, 160))
-                                resized_face = resized_face.astype( "float") / 255.0
-                                resized_face = np.expand_dims(resized_face, axis=0)
+                                try:
+                                    
+                                    resized_face = cv2.resize(scaled[i], (160, 160))
+                                    cv2.imwrite("After_Detected_Croped_Face.jpg",resized_face)
+                                    resized_face = resized_face.astype("float") / 255.0
+                                    resized_face = np.expand_dims(resized_face, axis=0)
+                                    preds = antiSpofingmodel.predict(resized_face)[0]
+                                    # if preds>0.8:
+                                    #     break
+                                except:
+                                    print("Spoofing cant predict")
+                                    continue
                                 ''' 
                                 # pass the face ROI through the trained liveness detector
                                 # model to determine if the face is "real" or "fake"
                                 '''
                                 preds = antiSpofingmodel.predict(resized_face)[0]
-                                print(preds)
+                                print("Spoofing Meter->",preds)
                                 indices = cv2.dnn.NMSBoxes(bbox,confs,thres,nms_threshold)
                                 try:
                                     if (indices.size ==0) or int(indices[0][0])== 0 :
-                                        isPerson=0
+                                        isPerson=1
                                         print("person detected")
                                     else:
-                                        isPerson=1
+                                        isPerson=0
                                         print("not person")
                                 except:
                                     pass
 
-                                if best_class_probabilities <1.0 and preds <0.001 : # Real prson and have acc >> 70% and his Face detected 
+                                if best_class_probabilities > 0.7 and preds < 0.4 and isPerson==1: # Real prson and have acc >> 70% and his Face detected 
                                     # if isPerson==0:  
                                     for i in indices:                     
                                         acc=float(confs[0])
@@ -352,10 +365,10 @@ def receive(sendSignal):
                                         x,y,w,h = box[0],box[1],box[2],box[3]
 
                                     cv2.rectangle(frame, (xmin, ymin), (xmax, ymax), (0, 255, 0), 2)    #boxing face
-                                    for H_i in HumanNames:
-                                        if HumanNames[best_class_indices[0]] == H_i:
+                                    for EmployeeNames in EmployeeModelNames:
+                                        if EmployeeModelNames[best_class_indices[0]] == EmployeeNames:
 
-                                            result_names = HumanNames[best_class_indices[0]]
+                                            result_names = EmployeeModelNames[best_class_indices[0]]
 
                                             name  = result_names.split('.')[0]
                                             Id = result_names.split('.')[1]
@@ -367,15 +380,15 @@ def receive(sendSignal):
                                                 real_face_list.append(Id)
 
                                                 if check:
-                                                    sendSignal='o'                                                 
+                                                    sendSignal='open'                                                 
                                                 else:
-                                                    sendSignal='x'
+                                                    sendSignal='dont'
                                                                         
-                                            print("Predictions : [ name: {} , accuracy: {:.3f} ]".format(HumanNames[best_class_indices[0]],best_class_probabilities[0]))
+                                            print("Predictions : [ name: {} , accuracy: {:.3f}  ,preds :{}]".format(EmployeeModelNames[best_class_indices[0]], best_class_probabilities[0],preds))
                                             label = 'Real'
                                             cv2.putText(frame, label, (xmax, ymax),cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 2)
                                             cv2.rectangle(frame, (xmin, ymin), (xmax, ymax),(0, 0, 255), 2)
-                                            # print("Predictions : [ name: {} , accuracy: {:.3f} ]".format( HumanNames[best_class_indices[0]], best_class_probabilities[0]))
+                                            # print("Predictions : [ name: {} , accuracy: {:.3f} ]".format( EmployeeModelNames[best_class_indices[0]], best_class_probabilities[0]))
                                             cv2.rectangle(frame, (xmin, ymin-20), (xmax, ymin-2), (255, 255, 255), -1)
                                             cv2.putText(frame, result_names, (xmin, ymin-5), cv2.FONT_HERSHEY_COMPLEX_SMALL,0.5, (0, 0, 0), thickness=1, lineType=1)
 
@@ -383,39 +396,59 @@ def receive(sendSignal):
                                             cv2.putText(frame,classNames[classIds[0][0]-1].upper(),(box[0]+10,box[1]+30),cv2.FONT_HERSHEY_COMPLEX,1,(0,255,0),2) #person text
    
                                                                                     
-                                elif best_class_probabilities <1.0 and preds > 0.2: #Fake person and have acc> 70% but Spoofing 
+                                elif best_class_probabilities < 0.7 and best_class_probabilities > 0.6 and preds > 0.7 and isPerson==1: #Fake person and have acc> 70% but Spoofing 
                                     
                                     cv2.rectangle(frame, (xmin, ymin), (xmax, ymax), (0, 255, 0), 2)
                                     
-                                    for H_i in HumanNames:
-                                        if HumanNames[best_class_indices[0]] == H_i:
+                                    for EmployeeNames in EmployeeModelNames:
+                                        if EmployeeModelNames[best_class_indices[0]] == EmployeeNames:
                                             
-                                            result_names = HumanNames[best_class_indices[0]]
+                                            result_names = EmployeeModelNames[best_class_indices[0]]
                                             name=result_names.split('.')[0]
                                             Id = result_names.split('.')[1]
                                             
                                             if Id not in fake_face_list:
                                                 
                                                 fake_face_list.append(Id)
-                                                sendSignal='x'
+                                                sendSignal='dont'
                                                 # send_thread = thread.Thread(target=send,args=(sendSignal,))
                                                 # send_thread.start() 
 
                                             label = 'Fake '+result_names+"is Taken as Spoofed"
                                             cv2.putText(frame, label, (xmax, ymax), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 0, 0), 2)
                                             cv2.rectangle(frame, (xmin, ymin), (xmax, ymax),(0, 0, 255), 2)
-                                            print("Predictions : [ name: {} , accuracy: {:.3f} ]".format(HumanNames[best_class_indices[0]], best_class_probabilities[0]))
+                                            print("Predictions : [ name: {} , accuracy: {:.3f}  ,preds :{}]".format(EmployeeModelNames[best_class_indices[0]], best_class_probabilities[0],preds))
                                             cv2.rectangle(frame, (xmin, ymin-20), (xmax, ymin-2), (255, 255, 255), -1)
                                             cv2.putText(frame, result_names, (xmin, ymin-5), cv2.FONT_HERSHEY_COMPLEX_SMALL,0.5, (0, 0, 0), thickness=1, lineType=1)
  
                                     print("Employee spoof attack")
                                 
+                                elif preds > 0.7 and isPerson==0:
+                                    cv2.rectangle(frame, (xmin, ymin),(xmax, ymax), (255, 0, 0), 2)
+                                    for EmployeeNames in EmployeeModelNames:
+                                        if EmployeeModelNames[best_class_indices[0]] == EmployeeNames:
+                                                result_names = EmployeeModelNames[best_class_indices[0]]
+
+                                                name = result_names.split('.')[0]
+                                                Id = result_names.split('.')[1]
+
+                                                label = 'Fake'
+                                                sendSignal='fake'
+                                                
+                                                cv2.putText(frame, label, (xmax, ymax), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 0, 0), 2)
+
+                                                cv2.rectangle(frame, (xmin, ymin),(xmax, ymax), (255, 0, 0), 2)
+
+                                                print("Predictions : [ name: {} , accuracy: {:.3f}  ,preds :{}]".format(EmployeeModelNames[best_class_indices[0]], best_class_probabilities[0],preds))
+
+
+
                                 else : # face detected but Unkonw 
                                     cv2.rectangle(frame, (xmin, ymin), (xmax, ymax), (0, 255, 0), 2)
                                     cv2.rectangle(frame, (xmin, ymin-20), (xmax, ymin-2), (0, 255,255), -1)
                                     cv2.putText(frame, "Unknow", (xmin,ymin-5), cv2.FONT_HERSHEY_COMPLEX_SMALL,
                                                         1, (0, 0, 0), thickness=1, lineType=1)
-                                    sendSignal='u'
+                                    sendSignal='unkn'
                                     # send_thread = thread.Thread(target=send,args=(sendSignal,))
                                     # send_thread.start()   
                             except:  
@@ -425,25 +458,41 @@ def receive(sendSignal):
                         sendSignal='t'
 
                     cv2.imshow('Face Recognition', frame)
-
+                    
                     try:
-                        if sendSignal == "o": # Have Access
-                            sa.sendall(bytes("o","utf-8"))
+                        if sendSignal == "open": # Have Access
+                            sa.sendall(bytes("open","utf-8"))                            
+                            print("sended",sendSignal)
                             sendSignal='Null' # reset 
 
-                        if sendSignal == 'x': # dont have access or spoofing
-                            sa.sendall(bytes("x","utf-8"))
+                        if sendSignal == 'dont': # dont have access or spoofing
+                            sa.sendall(bytes("dont","utf-8"))
+                            print("sended",sendSignal)
                             sendSignal='Null'
-                        if sendSignal == 'a': # person and no face detected 
-                            sa.sendall(bytes("a","utf-8"))
-                            sendSignal='Null'
-                        if sendSignal == 't': # Two Person Detected
-                            sa.sendall(bytes("t","utf-8"))
-                            sendSignal='Null'
-                        if sendSignal == 'u':  # unknow                      
-                            sa.sendall(bytes("u","utf-8"))
+                            
+                        if sendSignal == 'fake': #  spoofing
+                            print("sended",sendSignal)
+                            sa.sendall(bytes("fake","utf-8"))
                             sendSignal='Null'
 
+                        if sendSignal == 'body':
+                               # person and no face detected 
+                            print("sended",sendSignal)
+                            sa.sendall(bytes("body","utf-8"))
+                            sendSignal='Null'
+
+                        if sendSignal == 'twoo': # Two Person Detected
+                            sa.sendall(bytes("twoo","utf-8"))
+                            print("sended",sendSignal)
+                            sendSignal='Null'
+
+                        if sendSignal == 'unkn':
+                             # unknow                      
+                            sa.sendall(bytes("unkn","utf-8"))
+                            print("sended",sendSignal)
+                            sendSignal='Null'
+
+                        #sleep(1)
                         real_face_list.clear()
                         fake_face_list.clear()
 
@@ -454,6 +503,7 @@ def receive(sendSignal):
 
                     except socket as Error:
                         print("[ERROR] cant send ")
+
                     key = cv2.waitKey(1) & 0xFF
                     if key  == ord('q'):
                         sa.sendall(bytes("q","utf-8"))
@@ -565,7 +615,7 @@ def First_Run(sess, pnet, rnet, onet, MIN_SIZE, THERSHOLD, factor, IMAGE_SIZE, I
 def checkIfHaveAccess(EmpID):
 
     dbflag=True
-    ThisGate='2'
+
     try:
         conn = sqlite3.connect(DATABASEPATH) # connected to Raspberrypi 4 "//raspberrypi/Main/home/pi/DataBaseTable.db"
         # dbflag=True
@@ -573,21 +623,17 @@ def checkIfHaveAccess(EmpID):
         print("Database File Can't Be Found ")
         dbflag=False
 
-    if dbflag == True:
+    if dbflag:
         conn = sqlite3.connect(DATABASEPATH)
         conn.text_factory=str
-        cursor = conn.cursor()
-        check_query='SELECT Gate_ID,AcessSchemeID,Cat FROM EmployeeAccess WHERE Emp_ID=\''+EmpID+"\'"
-        cursor.execute(check_query)
     else:
         Tk().withdraw() # we don't want a full GUI, so keep the root window from appearing
         filename = askopenfilename(filetypes=[("Database", ".db")]) # show an "Open" dialog box and return the path to the selected file
         conn = sqlite3.connect(filename)
         print(filename)
-        cursor = conn.cursor()
-        check_query='SELECT Gate_ID,AcessSchemeID,Cat FROM EmployeeAccess WHERE Emp_ID=\''+EmpID+"\'"
-        cursor.execute(check_query)
-
+    cursor = conn.cursor()
+    check_query='SELECT Gate_ID,AcessSchemeID,Cat FROM EmployeeAccess WHERE Emp_ID=\''+EmpID+"\'"
+    cursor.execute(check_query)
     EmpAccessRecord=cursor.fetchall()
     for rowx in EmpAccessRecord:
         GateID=rowx[0]
@@ -595,11 +641,11 @@ def checkIfHaveAccess(EmpID):
         EmployeeCat=rowx[2]
         if str(GateID)==ThisGate:
             OpenDoorLock=True
-            print("Employee",EmpID,"Have Access")
+            print("Employee",EmpID,"Have Access to Gate",str(GateID))
             return OpenDoorLock
         else:
             OpenDoorLock=False
-            print("doest have access",EmpID)
+            print("Employee ",EmpID, "dont have  access to gate",str(GateID))
 
     conn.commit()
     conn.close()
