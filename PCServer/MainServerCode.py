@@ -25,12 +25,12 @@ afm = socket.AF_INET
 ThisGate='2'
 
 # Server Ip/port
-user_b_ip = '192.168.1.2'
+user_b_ip = '192.168.0.2' #server
 user_b_port = 9001
 
 #Client IP/port
 # client_ip=input("Please Enter The Gate IP like [192.168.xxx.xxx] or Enter Gate ID [1,2,3,...] ")
-user_a_ip =  '192.168.1.62'
+user_a_ip =  '192.168.0.3' #client pi zero
 user_a_port = 9000
 
 # creating socket
@@ -71,7 +71,7 @@ Personfile = 'PCServer/PersonDetectionModel/coco.names'
 
 sendSignal='j'
 firstRunimg='PCServer/training/TrainFolder50imgPerClass/Ahmed.1/img (1).jpeg'
-ENTER_CAMERA=0#'http://192.168.1.44:8080/video' #"rtsp://admin:TZZUNI@192.168.1.58:554/H.264"#0#'http://192.168.1.44:8080/video'
+ENTER_CAMERA='rtsp://admin:admin123456789@192.168.0.20:80'#'http://192.168.1.44:8080/video' #"rtsp://admin:TZZUNI@192.168.1.58:554/H.264"#0#'http://192.168.1.44:8080/video'
 
 class FreshestFrame(threading.Thread):
     def __init__(self, capture, name='FreshestFrame'):
@@ -240,7 +240,7 @@ def receive(sendSignal):
                 # frame = cv2.resize(frame, (0,0), fx=0.5, fy=0.5)'''
 
                 ret, frame = entering_camera_therad.read()  # Entering Cam
-                # frame = cv2.resize(frame, (0,0), fx=0.5, fy=0.5)
+                frame = cv2.resize(frame, (0,0), fx=0.5, fy=0.5)
                 try:
                     bounding_boxes, _ = detect_face.detect_face(frame, minsize, pnet, rnet, onet, threshold, factor)    
                     
@@ -331,7 +331,7 @@ def receive(sendSignal):
                                 face = frame[ymin:ymax, xmin:xmax]
                                 try:
                                     
-                                    resized_face = cv2.resize(scaled[i], (160, 160))
+                                    resized_face = cv2.resize(face, (160, 160))
                                     cv2.imwrite("After_Detected_Croped_Face.jpg",resized_face)
                                     resized_face = resized_face.astype("float") / 255.0
                                     resized_face = np.expand_dims(resized_face, axis=0)
@@ -358,7 +358,7 @@ def receive(sendSignal):
                                 except:
                                     pass
 
-                                if best_class_probabilities > 0.7 and preds < 0.4 and isPerson==1: # Real prson and have acc >> 70% and his Face detected 
+                                if best_class_probabilities > 0.5 and preds < 0.4 and isPerson==1: # Real prson and have acc >> 70% and his Face detected 
                                     # if isPerson==0:  
                                     for i in indices:                     
                                         acc=float(confs[0])
@@ -377,7 +377,7 @@ def receive(sendSignal):
                                             name=str(name)
                                             sendID=str(Id)
                                             
-                                            check=checkIfHaveAccess(sendID,name)
+                                            check=checkIfHaveAccess(sendID,name,'real')
                                             if Id not in real_face_list:
                                                 real_face_list.append(Id)
 
@@ -390,7 +390,7 @@ def receive(sendSignal):
                                             label = 'Real'
                                             cv2.putText(frame, label, (xmax, ymax),cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 2)
                                             cv2.rectangle(frame, (xmin, ymin), (xmax, ymax),(0, 0, 255), 2)
-                                            # print("Predictions : [ name: {} , accuracy: {:.3f} ]".format( EmployeeModelNames[best_class_indices[0]], best_class_probabilities[0]))
+                                            print("Predictions : [ name: {} , accuracy: {:.3f} ]".format( EmployeeModelNames[best_class_indices[0]], best_class_probabilities[0]))
                                             cv2.rectangle(frame, (xmin, ymin-20), (xmax, ymin-2), (255, 255, 255), -1)
                                             cv2.putText(frame, result_names, (xmin, ymin-5), cv2.FONT_HERSHEY_COMPLEX_SMALL,0.5, (0, 0, 0), thickness=1, lineType=1)
 
@@ -398,7 +398,7 @@ def receive(sendSignal):
                                             cv2.putText(frame,classNames[classIds[0][0]-1].upper(),(box[0]+10,box[1]+30),cv2.FONT_HERSHEY_COMPLEX,1,(0,255,0),2) #person text
    
                                                                                     
-                                elif best_class_probabilities < 0.7 and best_class_probabilities > 0.6 and preds > 0.7 and isPerson==1: #Fake person and have acc> 70% but Spoofing 
+                                elif best_class_probabilities < 0.5 and best_class_probabilities > 0.6 and preds > 0.7 and isPerson==1: #Fake person and have acc> 70% but Spoofing 
                                     
                                     cv2.rectangle(frame, (xmin, ymin), (xmax, ymax), (0, 255, 0), 2)
                                     
@@ -649,10 +649,10 @@ def checkIfHaveAccess(EmpID,emp_name,IsSpoofing):
             access_record=[ThisGate,EmpID,emp_name,date,Time]
             OpenDoorLock=True
             print("Employee",EmpID,"Have Access to Gate",str(GateID))
-            cursor.execute(
-                    '''INSERT INTO 
-                    Access_Sheet(Gate_ID,Emp_ID,Emp_FirstName,Date,Time) 
-                    VALUES (?,?,?,?,?,?);''', access_record)
+            # cursor.execute(
+            #         '''INSERT INTO 
+            #         Access_Sheet(Gate_ID,Emp_ID,Emp_FirstName,Date,Time) 
+            #         VALUES (?,?,?,?,?,?);''', access_record)
             return OpenDoorLock
         else:
             OpenDoorLock=False
