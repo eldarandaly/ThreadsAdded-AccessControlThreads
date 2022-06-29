@@ -1,4 +1,5 @@
 import socket, cv2, os
+from datetime import datetime
 import numpy as np
 import threading as thread
 from time import sleep
@@ -51,24 +52,25 @@ print(addr)
 data = b""
 payload_size = struct.calcsize("Q")
 
-modeldir = 'model/VGGFaces.pb'
-classifier_filename = 'class/TEST_IP.pkl'
-npy='npy'
-train_img="training/TrainFolder50imgPerClass"
+modeldir = 'PCServer/model/VGGFaces.pb'
+classifier_filename = 'PCServer/class/TEST_IP.pkl'
+npy='PCServer/npy'
+train_img="PCServer/training/TrainFolder50imgPerClass"
 
-configPath = 'PersonDetectionModel/ssd_mobilenet_v3_large_coco_2020_01_14.pbtxt' # tf
-weightsPath = 'PersonDetectionModel/frozen_inference_graph.pb'
+configPath = 'PCServer/PersonDetectionModel/ssd_mobilenet_v3_large_coco_2020_01_14.pbtxt' # tf
+weightsPath = 'PCServer/PersonDetectionModel/frozen_inference_graph.pb'
 
 thres = 0.6 # Threshold to detect object
 nms_threshold = 0.45
-
-DATABASEPATH="NewSeniorDataBase.db"
+path_to='C:/Users/ahmed/OneDrive/Desktop'
+DATABASEPATH = path_to+'/ProjectDatabase.db'
+# DATABASEPATH="PCServer/NewSeniorDataBase.db"
 
 classNames= []
-Personfile = 'PersonDetectionModel/coco.names'
+Personfile = 'PCServer/PersonDetectionModel/coco.names'
 
 sendSignal='j'
-firstRunimg='training/TrainFolder50imgPerClass/Ahmed.1/img (1).jpeg'
+firstRunimg='PCServer/training/TrainFolder50imgPerClass/Ahmed.1/img (1).jpeg'
 ENTER_CAMERA=0#'http://192.168.1.44:8080/video' #"rtsp://admin:TZZUNI@192.168.1.58:554/H.264"#0#'http://192.168.1.44:8080/video'
 
 class FreshestFrame(threading.Thread):
@@ -167,11 +169,11 @@ def receive(sendSignal):
             fake_face_list = []
             
             print('Loading Model')
-            json_file = open('antispoofing_models/antispoofing_model.json', 'r')
+            json_file = open('PCServer/antispoofing_models/antispoofing_model.json', 'r')
             loaded_model_json = json_file.read()
             json_file.close()
             antiSpofingmodel = model_from_json(loaded_model_json)
-            antiSpofingmodel.load_weights('antispoofing_models/antispoofing_model.h5')
+            antiSpofingmodel.load_weights('PCServer/antispoofing_models/antispoofing_model.h5')
             print("AntiSpoofing Model Loaded")
             facenet.load_model(modeldir)
 
@@ -375,7 +377,7 @@ def receive(sendSignal):
                                             name=str(name)
                                             sendID=str(Id)
                                             
-                                            check=checkIfHaveAccess(sendID)
+                                            check=checkIfHaveAccess(sendID,name)
                                             if Id not in real_face_list:
                                                 real_face_list.append(Id)
 
@@ -612,7 +614,7 @@ def First_Run(sess, pnet, rnet, onet, MIN_SIZE, THERSHOLD, factor, IMAGE_SIZE, I
             except:
                 print("error")
 
-def checkIfHaveAccess(EmpID):
+def checkIfHaveAccess(EmpID,emp_name,IsSpoofing):
 
     dbflag=True
 
@@ -635,13 +637,22 @@ def checkIfHaveAccess(EmpID):
     check_query='SELECT Gate_ID,AcessSchemeID,Cat FROM EmployeeAccess WHERE Emp_ID=\''+EmpID+"\'"
     cursor.execute(check_query)
     EmpAccessRecord=cursor.fetchall()
+    current_time = datetime.now()
+    date = current_time.strftime("%d/%m/%Y")
+    Time = current_time.strftime("%H:%M:%S")
     for rowx in EmpAccessRecord:
         GateID=rowx[0]
         AcessSchemaID=rowx[1]
         EmployeeCat=rowx[2]
+        
         if str(GateID)==ThisGate:
+            access_record=[ThisGate,EmpID,emp_name,date,Time]
             OpenDoorLock=True
             print("Employee",EmpID,"Have Access to Gate",str(GateID))
+            cursor.execute(
+                    '''INSERT INTO 
+                    Access_Sheet(Gate_ID,Emp_ID,Emp_FirstName,Date,Time) 
+                    VALUES (?,?,?,?,?,?);''', access_record)
             return OpenDoorLock
         else:
             OpenDoorLock=False

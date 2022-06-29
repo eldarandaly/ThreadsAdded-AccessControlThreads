@@ -18,8 +18,10 @@ display = drivers.Lcd()
 screen_signal=''
 start = 0
 doorUnlock = False # DOOR LOCK FLAG
+
 GPIO.setup(13,GPIO.IN,pull_up_down=GPIO.PUD_DOWN)
 buzzer=20
+
 GPIO.setup(buzzer,GPIO.OUT)
 # tcp and ipv4 address family
 tcp = socket.SOCK_STREAM
