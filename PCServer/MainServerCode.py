@@ -16,21 +16,27 @@ import tensorflow as tf
 import TFdetect_face as detect_face
 import TFfacenet as facenet 
 import pandas as pd
+import warnings
+
+from models.antispoofing_models.src.anti_spoof_predict import AntiSpoofPredict
+from models.antispoofing_models.src.generate_patches import CropImage
+from models.antispoofing_models.src.utility import parse_model_name
+warnings.filterwarnings('ignore')
 # tcp and ipv4 address family
 tcp = socket.SOCK_STREAM
 afm = socket.AF_INET
 #dfs
 
 
-ThisGate='2'
+ThisGate='3'
 
 # Server Ip/port
-user_b_ip = '192.168.0.2' #server
+user_b_ip = '192.168.0.4' #server
 user_b_port = 9001
 
 #Client IP/port
 # client_ip=input("Please Enter The Gate IP like [192.168.xxx.xxx] or Enter Gate ID [1,2,3,...] ")
-user_a_ip =  '192.168.0.3' #client pi zero
+user_a_ip =  '192.168.0.5' #client pi zero
 user_a_port = 9000
 
 # creating socket
@@ -53,17 +59,17 @@ data = b""
 payload_size = struct.calcsize("Q")
 
 modeldir = 'PCServer/model/VGGFaces.pb'
-classifier_filename = 'PCServer/class/TEST_IP.pkl'
+classifier_filename = 'PCServer/class/classfire.pkl'
 npy='PCServer/npy'
-train_img="PCServer/training/TrainFolder50imgPerClass"
+train_img="PCServer/Low_input_faces"
 
 configPath = 'PCServer/PersonDetectionModel/ssd_mobilenet_v3_large_coco_2020_01_14.pbtxt' # tf
 weightsPath = 'PCServer/PersonDetectionModel/frozen_inference_graph.pb'
 
 thres = 0.6 # Threshold to detect object
 nms_threshold = 0.45
-path_to='C:/Users/ahmed/OneDrive/Desktop'
-DATABASEPATH = path_to+'/ProjectDatabase.db'
+# path_to='C:/Users/ahmed/OneDrive/Desktop/Final_database/ProjectDatabase.db'
+DATABASEPATH = 'C:/Users/ahmed/OneDrive/Desktop/Final_database/ProjectDatabase.db'
 # DATABASEPATH="PCServer/NewSeniorDataBase.db"
 
 classNames= []
@@ -72,6 +78,8 @@ Personfile = 'PCServer/PersonDetectionModel/coco.names'
 sendSignal='j'
 firstRunimg='PCServer/training/TrainFolder50imgPerClass/Ahmed.1/img (1).jpeg'
 ENTER_CAMERA='rtsp://admin:admin123456789@192.168.0.20:80'#'http://192.168.1.44:8080/video' #"rtsp://admin:TZZUNI@192.168.1.58:554/H.264"#0#'http://192.168.1.44:8080/video'
+
+
 
 class FreshestFrame(threading.Thread):
     def __init__(self, capture, name='FreshestFrame'):
@@ -149,14 +157,51 @@ class FreshestFrame(threading.Thread):
 
             return (self.latestnum, self.frame)
 
+def CheckSpoofing(image_name, model_dir, device_id):
+    model_test = AntiSpoofPredict(device_id)
+    image_cropper = CropImage()
+    image = image_name
+    print("image taken")
+    # result = check_image(image)
+    # if result is False:
+    #     return
+    image_bbox = model_test.get_bbox(image)
+    prediction = np.zeros((1, 3))
+
+    # sum the prediction from single model's result
+    for model_name in os.listdir(model_dir):
+        h_input, w_input, model_type, scale = parse_model_name(model_name)
+        param = {
+            "org_img": image,
+            "bbox": image_bbox,
+            "scale": scale,
+            "out_w": w_input,
+            "out_h": h_input,
+            "crop": True,
+        }
+        if scale is None:
+            param["crop"] = False
+        img = image_cropper.crop(**param)
+        cv2.imwrite("modleimg.jpg",img)
+
+        prediction += model_test.predict(img, os.path.join(model_dir, model_name))
+
+    label = np.argmax(prediction)
+    value = prediction[0][label]/2
+    print(prediction)
+    if label == 1:
+        return ("Real", value)
+    else:
+        return ("Fake", value)
+
 def receive(sendSignal):
     with tf.Graph().as_default():
         with tf.compat.v1.Session() as sess: 
 
             pnet, rnet, onet = detect_face.create_mtcnn(sess, npy)
-            minsize = 30  # minimum size of face
+            minsize = 40  # minimum size of face
             threshold = [0.7, 0.7, 0.7]  # three steps's threshold
-            factor = 0.709  # scale factor
+            factor = 0.60  # scale factor
             margin = 44
             batch_size = 4  # 1000
             image_size = 182  # 182
@@ -265,7 +310,7 @@ def receive(sendSignal):
                     Trying To use this methode to prevent the access of people hide there face 
 
                     '''
-                    if faceNum==0 and isPerson==1: 
+                    if faceNum == 0 and isPerson == 1: 
                         for i in indices:
                             acc=float(confs[0])
                             if acc>0.7:
@@ -327,26 +372,36 @@ def receive(sendSignal):
                                 best_class_indices = np.argmax(predictions, axis=1)
 
                                 best_class_probabilities = predictions[np.arange(len(best_class_indices)), best_class_indices]
+                                
+                                if best_class_indices <0.5:
+                                    emb_array[0, :] = sess.run(embeddings, feed_dict=feed_dict)
+
+                                    # Predict Between the detected Embeddings and the preTrained Model
+                                    predictions = model.predict_proba(emb_array)
+
+                                    # get the Best Recog Class label
+                                    best_class_indices = np.argmax(predictions, axis=1)
+
+                                    best_class_probabilities = predictions[np.arange(
+                                        len(best_class_indices)), best_class_indices]  # get the acc      
+                                    continue                          
                                 # print(best_class_indices,best_class_probabilities)
                                 face = frame[ymin:ymax, xmin:xmax]
+                                
                                 try:
-                                    
-                                    resized_face = cv2.resize(face, (160, 160))
-                                    cv2.imwrite("After_Detected_Croped_Face.jpg",resized_face)
-                                    resized_face = resized_face.astype("float") / 255.0
-                                    resized_face = np.expand_dims(resized_face, axis=0)
-                                    preds = antiSpofingmodel.predict(resized_face)[0]
-                                    # if preds>0.8:
-                                    #     break
-                                except:
-                                    print("Spoofing cant predict")
-                                    continue
+                                    for k in range(2):
+                                        value,preds=CheckSpoofing(face,'./models/antispoofing_models/resources/anti_spoof_models',0)
+                                        print(value, preds)
+                                        print("after test")
+
+                                except Exception as e:
+                                    print(e)
                                 ''' 
                                 # pass the face ROI through the trained liveness detector
                                 # model to determine if the face is "real" or "fake"
                                 '''
-                                preds = antiSpofingmodel.predict(resized_face)[0]
-                                print("Spoofing Meter->",preds)
+                                # print("Spoofing Meter->",preds)
+
                                 indices = cv2.dnn.NMSBoxes(bbox,confs,thres,nms_threshold)
                                 try:
                                     if (indices.size ==0) or int(indices[0][0])== 0 :
@@ -358,7 +413,7 @@ def receive(sendSignal):
                                 except:
                                     pass
 
-                                if best_class_probabilities > 0.5 and preds < 0.4 and isPerson==1: # Real prson and have acc >> 70% and his Face detected 
+                                if best_class_probabilities > 0.6 and value == 'Real' and isPerson==1: # Real prson and have acc >> 70% and his Face detected 
                                     # if isPerson==0:  
                                     for i in indices:                     
                                         acc=float(confs[0])
@@ -388,7 +443,7 @@ def receive(sendSignal):
                                                                         
                                             print("Predictions : [ name: {} , accuracy: {:.3f}  ,preds :{}]".format(EmployeeModelNames[best_class_indices[0]], best_class_probabilities[0],preds))
                                             label = 'Real'
-                                            cv2.putText(frame, label, (xmax, ymax),cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 2)
+                                            cv2.putText(frame, label, (xmax, ymax),cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
                                             cv2.rectangle(frame, (xmin, ymin), (xmax, ymax),(0, 0, 255), 2)
                                             print("Predictions : [ name: {} , accuracy: {:.3f} ]".format( EmployeeModelNames[best_class_indices[0]], best_class_probabilities[0]))
                                             cv2.rectangle(frame, (xmin, ymin-20), (xmax, ymin-2), (255, 255, 255), -1)
@@ -398,7 +453,7 @@ def receive(sendSignal):
                                             cv2.putText(frame,classNames[classIds[0][0]-1].upper(),(box[0]+10,box[1]+30),cv2.FONT_HERSHEY_COMPLEX,1,(0,255,0),2) #person text
    
                                                                                     
-                                elif best_class_probabilities < 0.5 and best_class_probabilities > 0.6 and preds > 0.7 and isPerson==1: #Fake person and have acc> 70% but Spoofing 
+                                elif best_class_probabilities > 0.6 and value == 'Fake' and isPerson==1: #Fake person and have acc> 70% but Spoofing 
                                     
                                     cv2.rectangle(frame, (xmin, ymin), (xmax, ymax), (0, 255, 0), 2)
                                     
@@ -425,7 +480,7 @@ def receive(sendSignal):
  
                                     print("Employee spoof attack")
                                 
-                                elif preds > 0.7 and isPerson==0:
+                                elif value == 'Fake' and isPerson==0:
                                     cv2.rectangle(frame, (xmin, ymin),(xmax, ymax), (255, 0, 0), 2)
                                     for EmployeeNames in EmployeeModelNames:
                                         if EmployeeModelNames[best_class_indices[0]] == EmployeeNames:
@@ -443,8 +498,6 @@ def receive(sendSignal):
 
                                                 print("Predictions : [ name: {} , accuracy: {:.3f}  ,preds :{}]".format(EmployeeModelNames[best_class_indices[0]], best_class_probabilities[0],preds))
 
-
-
                                 else : # face detected but Unkonw 
                                     cv2.rectangle(frame, (xmin, ymin), (xmax, ymax), (0, 255, 0), 2)
                                     cv2.rectangle(frame, (xmin, ymin-20), (xmax, ymin-2), (0, 255,255), -1)
@@ -453,11 +506,12 @@ def receive(sendSignal):
                                     sendSignal='unkn'
                                     # send_thread = thread.Thread(target=send,args=(sendSignal,))
                                     # send_thread.start()   
-                            except:  
+                            except Exception as e:
+                                print(e)  
                                 print("[ERROR] Frame skipped ")
 
                     elif faceNum>1: # Person Detected but No Face Detected 
-                        sendSignal='t'
+                        sendSignal='twoo'
 
                     cv2.imshow('Face Recognition', frame)
                     
@@ -642,17 +696,18 @@ def checkIfHaveAccess(EmpID,emp_name,IsSpoofing):
     Time = current_time.strftime("%H:%M:%S")
     for rowx in EmpAccessRecord:
         GateID=rowx[0]
+        print(GateID)
         AcessSchemaID=rowx[1]
         EmployeeCat=rowx[2]
         
         if str(GateID)==ThisGate:
-            access_record=[ThisGate,EmpID,emp_name,date,Time]
+            access_record=[str(ThisGate),str(EmpID),str(emp_name),date,Time]
             OpenDoorLock=True
             print("Employee",EmpID,"Have Access to Gate",str(GateID))
-            # cursor.execute(
-            #         '''INSERT INTO 
-            #         Access_Sheet(Gate_ID,Emp_ID,Emp_FirstName,Date,Time) 
-            #         VALUES (?,?,?,?,?,?);''', access_record)
+            cursor.execute("INSERT INTO Access_Sheet (Gate_ID,Emp_ID,Emp_FirstName,Date,Time) VALUES (?,?,?,?,?);", access_record)
+            print("saved on DB")
+            conn.commit()
+
             return OpenDoorLock
         else:
             OpenDoorLock=False
